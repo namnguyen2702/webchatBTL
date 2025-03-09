@@ -1,49 +1,94 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - webchatBTL</title>
+    <title>@ViewData["Title"] - BTL</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/webchatBTL.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
+
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">webchatBTL</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow pb-3"
+            style="background-color: #612d2d; color: white">
+            <div class="container">
+                <a class="navbar-brand1" asp-area="" asp-controller="Home" asp-action="Index">BTL</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                    @if (User.Identity.IsAuthenticated == true)
+                    {
+                        <ul class="navbar-nav flex-grow-1 justify-content-between">
+                            <li class="nav-item-1 d-flex align-items-center">
+                                <a class="nav-link-1" style="color:white; margin: 0 10px;" asp-area="" asp-controller="Home"
+                                    asp-action="Index">Home</a>
+                                <a class="nav-link-1" style="color:white; margin: 0 10px;" asp-area="Admin"
+                                    asp-controller="Home" asp-action="Index">Admin</a>
+                                <a class="nav-link-1" style="color:white; margin: 0 10px;" asp-area=""
+                                    asp-controller="Event" asp-action="Index">Lịch làm việc</a>
+
+                            </li>
+                            <li class="nav-item-1">
+                                <a class="nav-link-1" style="color:white; margin: 0 10px;"
+                                    href="/tai-khoan-cua-toi.html">Tài khoản của tôi</a>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="navbar-nav flex-grow-1 justify-content-between">
+                            <li class="nav-item-1">
+                                <a class="nav-link-1" style="color:white; margin: 0 10px;" asp-area="" asp-controller="Home"
+                                    asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item-1 d-flex align-items-center">
+                                <a class="nav-link-1" style="color:white; margin: 0 10px;" href="/dang-ky.html">Đăng ký</a>
+                                |
+                                <a class="nav-link-1" style="color:white; margin: 0 10px;" href="/dang-nhap.html">Đăng
+                                    nhập</a>
+                            </li>
+                        </ul>
+                    }
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+
+    <div class="container1">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer1" style="background-color: #612d2d; color: white">
         <div class="container">
-            &copy; 2025 - webchatBTL - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <p style="color:white; margin: 0">©
+                <script>document.write(new Date().getFullYear())</script> Chatvia. WNC <i
+                    class="mdi mdi-heart text-danger"></i> by G01
+            </p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await Component.InvokeAsync("Notyf")
+
+
+    <!-- JAVASCRIPT Home -->
+    <script src="~/assetschathome/js/jquery-3.5.1.min.js"></script>
+    <script src="~/assetschathome/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assetschathome/js/owl.carousel.min.js"></script>
+    <script src="~/assetschathome/js/parallax.min.js"></script>
+    <script src="~/assetschathome/js/main.js"></script>
+    <!-- JAVASCRIPT Home -- end -->
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
+
 </html>
