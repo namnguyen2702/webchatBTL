@@ -8,14 +8,66 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
+    <style>
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-link-1 {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link-1:hover {
+            color: #b3710d;
+        }
+
+        .btn-custom {
+            background-color: #d9534f;
+            /* Màu đỏ */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s ease;
+            border: none;
+            margin: 0 5px;
+        }
+
+        .btn-custom:hover {
+            background-color: #eeeeee;
+            color: #612d2d;
+        }
+
+        .nav-item-1 {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar {
+            background-color: #f5e1c8;
+        }
+
+        .logo_chat {
+            width: 4%;
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow pb-3"
-            style="background-color: #612d2d; color: white">
+            style="background-color: #b5c191; color: rgb(69, 64, 64)">
             <div class="container">
-                <a class="navbar-brand1" asp-area="" asp-controller="Home" asp-action="Index">BTL</a>
+                <img src="~/assetschathome/img/logo_chatbot.png" alt="" class="logo_chat">
+                @* <a class="navbar-brand1" asp-area="" asp-controller="Home" asp-action="Index">CHATBTL</a> *@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,34 +77,29 @@
                     {
                         <ul class="navbar-nav flex-grow-1 justify-content-between">
                             <li class="nav-item-1 d-flex align-items-center">
-                                <a class="nav-link-1" style="color:white; margin: 0 10px;" asp-area="" asp-controller="Home"
-                                    asp-action="Index">Home</a>
-                                <a class="nav-link-1" style="color:white; margin: 0 10px;" asp-area="Admin"
-                                    asp-controller="Home" asp-action="Index">Admin</a>
-                                <a class="nav-link-1" style="color:white; margin: 0 10px;" asp-area=""
-                                    asp-controller="Event" asp-action="Index">Lịch làm việc</a>
-
+                                <a class="nav-link-1" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link-1" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
+                                <a class="nav-link-1" asp-area="" asp-controller="Event" asp-action="Index">Lịch làm
+                                    việc</a>
                             </li>
                             <li class="nav-item-1">
-                                <a class="nav-link-1" style="color:white; margin: 0 10px;"
-                                    href="/tai-khoan-cua-toi.html">Tài khoản của tôi</a>
+                                <a class="btn-custom" href="/tai-khoan-cua-toi.html">Account</a>
                             </li>
                         </ul>
+
                     }
                     else
                     {
                         <ul class="navbar-nav flex-grow-1 justify-content-between">
                             <li class="nav-item-1">
-                                <a class="nav-link-1" style="color:white; margin: 0 10px;" asp-area="" asp-controller="Home"
-                                    asp-action="Index">Home</a>
+                                <a class="nav-link-1" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item-1 d-flex align-items-center">
-                                <a class="nav-link-1" style="color:white; margin: 0 10px;" href="/dang-ky.html">Đăng ký</a>
-                                |
-                                <a class="nav-link-1" style="color:white; margin: 0 10px;" href="/dang-nhap.html">Đăng
-                                    nhập</a>
+                                <a class="btn-custom" href="#">Register</a>
+                                <a class="btn-custom" href="#">Login</a>
                             </li>
                         </ul>
+
                     }
                 </div>
             </div>
@@ -68,8 +115,8 @@
     <footer class="border-top footer1" style="background-color: #612d2d; color: white">
         <div class="container">
             <p style="color:white; margin: 0">©
-                <script>document.write(new Date().getFullYear())</script> Chatvia. WNC <i
-                    class="mdi mdi-heart text-danger"></i> by G01
+                <script>document.write(new Date().getFullYear())</script> Web Chat<i
+                    class="mdi mdi-heart text-danger"></i> by G41
             </p>
         </div>
     </footer>

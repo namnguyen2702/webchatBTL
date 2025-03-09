@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qEgDmFOlWn1szWtZA5sb21wWvRaIx1W6Bj9wXrEhgNI=",
+  "Hash": "ITTb8wcP4oax7BC3QZzWWvyo3R5xFO4GP9rQ7z8xv0w=",
   "Source": "webchatBTL",
   "BasePath": "_content/webchatBTL",
   "Mode": "Default",
@@ -20193,6 +20193,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assetsChatHome\\img\\articles\\article2.jpg"
+    },
+    {
+      "Identity": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\assetsChatHome\\img\\logo_chatbot.png",
+      "SourceId": "webchatBTL",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\",
+      "BasePath": "_content/webchatBTL",
+      "RelativePath": "assetsChatHome/img/logo_chatbot.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assetsChatHome\\img\\logo_chatbot.png"
     },
     {
       "Identity": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\assetsChatHome\\img\\logo--red.svg",

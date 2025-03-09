@@ -65,6 +65,10 @@
       "PackagePath": "staticwebassets\\assetsChatHome\\img\\logo.svg"
     },
     {
+      "Id": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\assetsChatHome\\img\\logo_chatbot.png",
+      "PackagePath": "staticwebassets\\assetsChatHome\\img\\logo_chatbot.png"
+    },
+    {
       "Id": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\assetsChatHome\\img\\other\\404.jpg",
       "PackagePath": "staticwebassets\\assetsChatHome\\img\\other\\404.jpg"
     },
