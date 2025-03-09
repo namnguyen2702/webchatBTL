@@ -2,7 +2,211 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<head>
+    <!-- Home -->
+    <!-- CSS -->
+    <link href="~/assetschathome/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assetschathome/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/assetschathome/css/material-design-iconic-font.min.css" rel="stylesheet" />
+    <link href="~/assetschathome/css/main.css" rel="stylesheet" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="~/assetschathome/icon/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="~/assetschathome/icon/favicon-32x32.png">
+    <!-- Home -- end -->
+</head>
+
+<!-- Home Section -->
+<section class="home home--bg" data-parallax="scroll">
+    <div class="home__text-wrap">
+        <!-- Title -->
+        <h1>How can we help you?</h1>
+        <p>It's not the mountain we conquer, but ourselves</p>
+        <!-- End Title -->
+        <div class="home__search">
+            <form action="#">
+                <input type="text" placeholder="Enter a search term here">
+                <button type="submit"><i class="zmdi zmdi-search"></i></button>
+            </form>
+            <span>or write in</span>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="@Url.Action("AccessServiceFeature", "Subscription", new { serviceName = "LiveChat", returnUrl = Url.Action("Index", "ChatHub") })"
+                    class="default-button"> Live Chat
+                </a>
+            }
+            else
+            {
+                <a href="dang-nhap.html" class="default-button">Live Chat</a>
+            }
+        </div>
+    </div>
+</section>
+<!-- End Home Section -->
+
+<!-- Services Section -->
+<div class="container">
+    <section class="section-padding-70 white-bg border-bottom">
+        <div class="container__home-chat">
+            <div class="row">
+                <!-- Service card -->
+                <div class="col-12 col-md-4">
+                    <div class="service-card">
+                        <a href="#">
+                            <span class="icon"><i class="zmdi zmdi-phone"></i></span>
+                            <h2>Call Center</h2>
+                            <h6><span>23</span>outbound call to day</h6>
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
+                                suffered alteration in some form.</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- End Service card -->
+                <!-- Service card -->
+                <div class="col-12 col-md-4">
+                    <div class="service-card">
+                        <a href="#" class="chat-button">
+                            <span class="icon"><i class="zmdi zmdi-comments"></i></span>
+                            <h2>Live Chat</h2>
+                            <h6><span>online</span>24/7</h6>
+                            <p>Various versions have evolved over the years, sometimes by accident, sometimes on
+                                purpose.</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- End Service card -->
+                <!-- Service card -->
+                <div class="col-12 col-md-4">
+                    <div class="service-card">
+                        <a href="faq.html">
+                            <span class="icon"><i class="zmdi zmdi-assignment"></i></span>
+                            <h2>FAQ</h2>
+                            <h6><span>1138</span>FAQ<sub>s</sub></h6>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of
+                                a page when looking at its layout.</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- End Service card -->
+            </div>
+        </div>
+    </section>
 </div>
+<!-- End Services Section -->
+
+<!-- FAQs Section -->
+<div class="container">
+    <section class="section-padding-100 border-bottom">
+        <div class="container__home-chat">
+            <div class="row">
+                <!-- Section title -->
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Top FAQ<sub>s</sub></h2>
+                        <p>Our FAQs are here to help you</p>
+                    </div>
+                </div>
+                <!-- End Section title -->
+                <!-- FAQ card -->
+                <div class="col-12 col-lg-6 col-xl-3">
+                    <div class="faq-card">
+                        <h3>I forgot my password</h3>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
+                            suffered alteration in some form, by injected humour, or randomised words which don't look
+                            even slightly believable.</p>
+                    </div>
+                </div>
+                <!-- End FAQ card -->
+                <!-- FAQ card -->
+                <div class="col-12 col-lg-6 col-xl-3">
+                    <div class="faq-card">
+                        <h3>My page has been blocked!</h3>
+                        <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
+                            was born and I will give you a complete account of the system, and expound the actual
+                            teachings of the great explorer of the truth, the master-builder of human happiness.</p>
+                    </div>
+                </div>
+                <!-- End FAQ card -->
+                <!-- FAQ card -->
+                <div class="col-12 col-lg-6 col-xl-3">
+                    <div class="faq-card">
+                        <h3>How to delete my account?</h3>
+                        <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,
+                            making this the first true generator on the Internet.</p>
+                    </div>
+                </div>
+                <!-- End FAQ card -->
+                <!-- FAQ card -->
+                <div class="col-12 col-lg-6 col-xl-3">
+                    <div class="faq-card">
+                        <h3>How do I disable email notifications?</h3>
+                        <p>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence
+                            structures, to generate Lorem Ipsum which looks reasonable. If you are going to use a
+                            passage of Lorem Ipsum.</p>
+                    </div>
+                </div>
+                <!-- End FAQ card -->
+                <!-- View all -->
+                <div class="col-12">
+                    <div class="view-all">
+                        <a href="faq.html" class="default-button">View more</a>
+                    </div>
+                </div>
+                <!-- End View all -->
+            </div>
+        </div>
+    </section>
+</div>
+<!-- End FAQs Section -->
+
+<!-- Testimonials -->
+<div class="container">
+    <section class="section-padding-100 white-bg">
+        <div class="container__home-chat">
+            <div class="row">
+                <!-- Section title -->
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Testimonials</h2>
+                        <p>What 100% real people say about us</p>
+                    </div>
+                </div>
+                <!-- End Section title -->
+                <!-- Testimonial card -->
+                <div class="col-12 col-lg-4">
+                    <div class="testimonial-card">
+                        <img src="~/assetschathome/img/user1.jpg" />
+                        <h4>John Doe</h4>
+                        <span>Product Manager</span>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout.</p>
+                    </div>
+                </div>
+                <!-- End Testimonial card -->
+                <!-- Testimonial card -->
+                <div class="col-12 col-lg-4">
+                    <div class="testimonial-card">
+                        <img src="~/assetschathome/img/user2.jpg" />
+                        <h4>John Doe</h4>
+                        <span>Designer</span>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout.</p>
+                    </div>
+                </div>
+                <!-- End Testimonial card -->
+                <!-- Testimonial card -->
+                <div class="col-12 col-lg-4">
+                    <div class="testimonial-card">
+                        <img src="~/assetschathome/img/user3.jpg" />
+                        <h4>John Doe</h4>
+                        <span>Developer</span>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout.</p>
+                    </div>
+                </div>
+                <!-- End Testimonial card -->
+            </div>
+        </div>
+    </section>
+</div>
+<!-- End Testimonials -->
