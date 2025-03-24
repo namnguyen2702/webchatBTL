@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ProjectVisualStudio\\webchatBTL\\webchatBTL.csproj": {}
+    "D:\\SoureVSCode\\WebchatBTL\\webchatBTL\\webchatBTL.csproj": {}
   },
   "projects": {
-    "C:\\ProjectVisualStudio\\webchatBTL\\webchatBTL.csproj": {
+    "D:\\SoureVSCode\\WebchatBTL\\webchatBTL\\webchatBTL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ProjectVisualStudio\\webchatBTL\\webchatBTL.csproj",
+        "projectUniqueName": "D:\\SoureVSCode\\WebchatBTL\\webchatBTL\\webchatBTL.csproj",
         "projectName": "webchatBTL",
-        "projectPath": "C:\\ProjectVisualStudio\\webchatBTL\\webchatBTL.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\ProjectVisualStudio\\webchatBTL\\obj\\",
+        "projectPath": "D:\\SoureVSCode\\WebchatBTL\\webchatBTL\\webchatBTL.csproj",
+        "packagesPath": "C:\\Users\\namnguyen\\.nuget\\packages\\",
+        "outputPath": "D:\\SoureVSCode\\WebchatBTL\\webchatBTL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\namnguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -84,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
