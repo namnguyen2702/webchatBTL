@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using webchatBTL.Models;
 
 #nullable disable
 
-namespace BTL.Models
+namespace webchatBTL.Models
 {
     [Index(nameof(Email), Name = "UQ__Users__A9D10534058B5E5C", IsUnique = true)]
     public partial class User

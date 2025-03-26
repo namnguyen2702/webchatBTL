@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using webchatBTL.Models;
 
 #nullable disable
 
-namespace BTL.Models
+namespace webchatBTL.Models
 {
     public partial class Message
     {
