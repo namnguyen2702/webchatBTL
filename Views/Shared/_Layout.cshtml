@@ -9,54 +9,57 @@
     <link rel="stylesheet" href="~/css/site.css" />
 
     <style>
-        .navbar-nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        /* Navbar tổng thể */
+        .navbar {
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        /* Các mục menu (Home, Admin, Lịch làm việc) */
         .nav-link-1 {
-            color: white;
-            font-weight: bold;
-            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
             padding: 10px 15px;
+            text-decoration: none;
             transition: color 0.3s ease;
+            font-weight: bold;
         }
 
         .nav-link-1:hover {
-            color: #b3710d;
+            color: #000000;
+            /* Màu đỏ nhạt khi hover */
         }
 
+        /* Nút Account */
         .btn-custom {
-            background-color: #d9534f;
-            /* Màu đỏ */
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
+            background-color: transparent;
+            /* Loại bỏ nền đỏ */
+            border: 1px solid #333;
+            /* Viền đen */
+            color: #333;
+            font-weight: 500;
+            padding: 8px 16px;
             border-radius: 5px;
-            font-weight: bold;
-            display: inline-block;
-            transition: background 0.3s ease;
-            border: none;
-            margin: 0 5px;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .btn-custom:hover {
-            background-color: #eeeeee;
-            color: #612d2d;
+            background-color: #bd5f5f;
+            color: #000;
         }
 
-        .nav-item-1 {
-            display: flex;
-            align-items: center;
+        /* Căn chỉnh khoảng cách giữa các nút Register và Login */
+        .nav-item-1.d-flex a {
+            margin-right: 10px;
+            font-weight: bold;
         }
 
-        .navbar {
-            background-color: #f5e1c8;
-        }
 
         .logo_chat {
-            width: 4%;
+            width: 3%;
         }
     </style>
 </head>
@@ -64,7 +67,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow pb-3"
-            style="background-color: #b5c191; color: rgb(69, 64, 64)">
+            style="background-color: #ffff; color: rgb(69, 64, 64)">
             <div class="container">
                 <img src="~/assetschathome/img/logo_chatbot.png" alt="" class="logo_chat">
                 @* <a class="navbar-brand1" asp-area="" asp-controller="Home" asp-action="Index">CHATBTL</a> *@
@@ -95,8 +98,8 @@
                                 <a class="nav-link-1" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item-1 d-flex align-items-center">
-                                <a class="btn-custom" href="#">Register</a>
-                                <a class="btn-custom" href="#">Login</a>
+                                <a class="btn-custom" href="/dang-ky.html">Register</a>
+                                <a class="btn-custom" href="/dang-nhap.html">Login</a>
                             </li>
                         </ul>
 
@@ -112,7 +115,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer1" style="background-color: #612d2d; color: white">
+    <footer class="border-top footer1" style="background-color: #d35252; color: white">
         <div class="container">
             <p style="color:white; margin: 0">©
                 <script>document.write(new Date().getFullYear())</script> Web Chat<i

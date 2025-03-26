@@ -1,7 +1,17 @@
 using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
+using Microsoft.EntityFrameworkCore;
+using webchatBTL.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/dang-nhap.html";
+        options.AccessDeniedPath = "/hanchetruycap.html";
+    });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -9,6 +19,14 @@ builder.Services.AddControllersWithViews();
 // Đăng ký Notyf
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<WebchatBTLDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BTL")));
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 builder.Services.AddNotyf(config =>
 {
     config.DurationInSeconds = 5;
@@ -17,6 +35,7 @@ builder.Services.AddNotyf(config =>
 });
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -30,7 +49,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

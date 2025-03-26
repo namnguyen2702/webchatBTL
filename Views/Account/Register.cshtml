@@ -1,0 +1,122 @@
+@model webchatBTL.ModelsViews.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Đăng ký tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+
+    <!-- Singin, Sing up -->
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assetschat/images/favicon.ico">
+    <!-- Bootstrap Css -->
+    <link href="~/assetschat/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="~/assetschat/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="~/assetschat/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    <!-- Singin, Sing up -- end -->
+
+</head>
+
+<div class="account-pages my-5 pt-sm-5">
+    <div class="container">
+        <div class="row col-12 justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-5">
+                <div class="text-center mb-4">
+                    <a href="index.html" class="auth-logo mb-5 d-block">
+                        <img src="~/assetsChat/images/logo-dark.png" alt="" height="30" class="logo logo-dark">
+                        @* <img src="~/assetsChat/images/logo-light.png" alt="" height="30" class="logo logo-light"> *@
+                    </a>
+
+                    <h4>Sign up</h4>
+                    <p class="text-muted mb-4">Get your Chatvia account now.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="p-3">
+                            <form asp-action="Register">
+
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row col-12">
+                                    <div class="mb-3">
+                                        <label asp-for="FullName" class="control-label"></label>
+                                        <div class="input-group bg-light-subtle rounded-3  mb-3">
+                                            <span class="input-group-text text-muted" id="fullname">
+                                                <i class="ri-user-line"></i>
+                                            </span>
+                                            <input type="text" asp-for="FullName" class="form-control form-control-lg bg-light-subtle border-light" placeholder="Enter FullName" />
+                                        </div>
+                                        <span asp-validation-for="FullName" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label asp-for="Email" class="control-label"></label>
+                                        <div class="input-group bg-light-subtle rounded-3  mb-3">
+                                            <span class="input-group-text text-muted" id="eamil">
+                                                <i class="ri-mail-line"></i>
+                                            </span>
+                                            <input type="email" asp-for="Email" class="form-control form-control-lg bg-light-subtle border-light" placeholder="Enter Email" />
+                                        </div>
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="Phone" class="control-label"></label>
+                                    <div class="input-group bg-light-subtle mb-3 rounded-3">
+                                        <span class="input-group-text border-light text-muted" id="phone">
+                                            <i class="mdi-cellphone-iphone"></i>
+                                        </span>
+                                        <input asp-for="Phone" class="form-control form-control-lg bg-light-subtle border-light" placeholder="Enter Phone" />
+                                    </div>
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <div class="input-group bg-light-subtle mb-3 rounded-3">
+                                        <span class="input-group-text border-light text-muted" id="password">
+                                            <i class="ri-lock-password-line"></i>
+                                        </span>
+                                        <input asp-for="Password" type="password" class="form-control form-control-lg bg-light-subtle border-light" placeholder="Enter Password" />
+                                    </div>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                                    <div class="input-group bg-light-subtle mb-3 rounded-3">
+                                        <span class="input-group-text border-light text-muted" id="confirmpasswork">
+                                            <i class="ri-lock-password-line"></i>
+                                        </span>
+                                        <input asp-for="ConfirmPassword" class="form-control form-control-lg bg-light-subtle border-light" placeholder="Enter ConfirmPassword" />
+                                    </div>
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button class="btn btn-primary waves-effect waves-light" type="submit">Sign up</button>
+                                </div>
+
+                                <div class="mt-4 text-center">
+                                    <p class="text-muted mb-0">By registering you agree to the Chatvia <a href="#" class="text-primary">Terms of Use</a></p>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-1 text-center">
+                    <p>Already have an account ? <a href="/dang-nhap.html" class="fw-medium text-primary"> Signin </a> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
