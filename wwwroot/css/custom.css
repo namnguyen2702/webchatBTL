@@ -1,0 +1,104 @@
+/* Giao diện vùng Dashboard */
+.account-page-area {
+    background: linear-gradient(to right, #f8f9fa, #fefefe);
+    padding: 60px 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Menu trái */
+.myaccount-tab-trigger {
+    border-right: 1px solid #e0e0e0;
+    padding-right: 20px;
+}
+
+.myaccount-tab-trigger .nav-link {
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ccc;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: all 0.25s ease;
+}
+
+.myaccount-tab-trigger .nav-link:hover,
+.myaccount-tab-trigger .nav-link.active {
+    background: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+    box-shadow: 0 2px 8px rgba(13, 110, 253, 0.25);
+}
+
+/* Phần nội dung bên phải */
+.myaccount-tab-content {
+    padding-left: 30px;
+}
+
+.myaccount-dashboard {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* Câu chào */
+.myaccount-dashboard p:first-of-type {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.myaccount-dashboard a {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+/* Table đơn hàng */
+.myaccount-orders table {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.myaccount-orders th {
+    background-color: #f3f3f3;
+    color: #333;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.myaccount-orders td {
+    padding: 12px 10px;
+    font-size: 14px;
+}
+
+/* Form thông tin tài khoản */
+.myaccount-form input {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+}
+
+.myaccount-form input:focus {
+    border-color: #0d6efd;
+    outline: none;
+}
+
+.myaccount-form button {
+    background-color: #0d6efd;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.myaccount-form button:hover {
+    background-color: #084298;
+}

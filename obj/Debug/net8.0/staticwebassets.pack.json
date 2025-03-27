@@ -4361,6 +4361,10 @@
       "PackagePath": "staticwebassets\\assets\\vendors\\select2\\select2x2.png"
     },
     {
+      "Id": "D:\\SoureVSCode\\WebchatBTL\\webchatBTL\\wwwroot\\css\\custom.css",
+      "PackagePath": "staticwebassets\\css\\custom.css"
+    },
+    {
       "Id": "D:\\SoureVSCode\\WebchatBTL\\webchatBTL\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

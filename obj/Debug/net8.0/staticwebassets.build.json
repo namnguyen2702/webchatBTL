@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "39/511jYi+J/SVV0md6mpSiMzBV1QFcrgYYLUCmp/OU=",
+  "Hash": "0ComufyU9KDPQ6MJv/RI/wUvEEvdboADU5OBflA2f6I=",
   "Source": "webchatBTL",
   "BasePath": "_content/webchatBTL",
   "Mode": "Default",
@@ -20820,6 +20820,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assetsChatHome\\js\\parallax.min.js"
+    },
+    {
+      "Identity": "D:\\SoureVSCode\\WebchatBTL\\webchatBTL\\wwwroot\\css\\custom.css",
+      "SourceId": "webchatBTL",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SoureVSCode\\WebchatBTL\\webchatBTL\\wwwroot\\",
+      "BasePath": "_content/webchatBTL",
+      "RelativePath": "css/custom.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\custom.css"
     },
     {
       "Identity": "D:\\SoureVSCode\\WebchatBTL\\webchatBTL\\wwwroot\\css\\site.css",
