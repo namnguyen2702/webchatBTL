@@ -42,6 +42,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SoureVSCode/WebchatBTL/webchatBTL/Views/ChatHub/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdEh1YlxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoureVSCode/WebchatBTL/webchatBTL/Views/ChatHub/_ChatLeftSidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdEh1YlxfQ2hhdExlZnRTaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoureVSCode/WebchatBTL/webchatBTL/Views/ChatHub/_LeftSidebarMenuPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdEh1YlxfTGVmdFNpZGViYXJNZW51UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoureVSCode/WebchatBTL/webchatBTL/Views/ChatHub/_UserChat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdEh1YlxfVXNlckNoYXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SoureVSCode/WebchatBTL/webchatBTL/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -56,6 +72,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/SoureVSCode/WebchatBTL/webchatBTL/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoureVSCode/WebchatBTL/webchatBTL/Views/Subscription/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoureVSCode/WebchatBTL/webchatBTL/Views/Subscription/SubscriptionNotice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uXFN1YnNjcmlwdGlvbk5vdGljZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoureVSCode/WebchatBTL/webchatBTL/Views/Test/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/SoureVSCode/WebchatBTL/webchatBTL/Views/_ViewImports.cshtml]
