@@ -1,0 +1,47 @@
+@startuml
+skinparam participant {
+    BackgroundColor White
+    BorderColor Black
+}
+skinparam database {
+    BackgroundColor White
+    BorderColor Black
+}
+skinparam actor {
+    BackgroundColor White
+    BorderColor Black
+}
+
+actor "Nhân viên" as NV
+participant "UI" as UI
+participant "Controller" as Controller
+participant "Model" as Model
+database "Database" as DB
+
+NV -> UI : 1. Nhập tên/mã sản phẩm
+activate UI
+
+UI -> Controller : 2. searchProduct()
+activate Controller
+
+Controller -> Model : 3. getProductByKeyword()
+activate Model
+
+Model -> DB : 4. Hiển thị danh sách sản phẩm theo tên đã tìm
+activate DB
+DB --> Model : 5. Danh sách sản phẩm
+deactivate DB
+
+alt Có sản phẩm phù hợp
+    Model --> Controller : 6a. Danh sách sản phẩm + số lượng tồn
+    Controller --> UI : 7a. Hiển thị danh sách sản phẩm kèm tồn kho
+else Không có kết quả
+    Model --> Controller : 6b. Trả danh sách rỗng
+    Controller --> UI : 7b. Hiển thị thông báo “Không tìm thấy sản phẩm”
+end
+
+deactivate Model
+deactivate Controller
+deactivate UI
+
+@enduml
