@@ -68,7 +68,7 @@ namespace webchatBTL.Models
 
             modelBuilder.Entity<CompanySubscription>(entity =>
             {
-                entity.HasKey(e => e.Id) // ✅ Sửa tại đây: dùng Id là khóa chính
+                entity.HasKey(e => e.Id) // Sửa tại đây: dùng Id là khóa chính
                     .HasName("PK_CompanySubscription");
 
                 entity.Property(e => e.StartDate).HasColumnType("date");
