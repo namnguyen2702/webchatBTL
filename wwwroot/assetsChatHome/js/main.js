@@ -104,6 +104,6 @@ $(document).ready(function () {
 	$('.chat-button').on('click', function(e) {
 		$('.chat-button--fixed').toggleClass('active');
 		$('.chat').toggleClass('active');
-		e.preventDefault();
+		// e.preventDefault();
 	});
 });

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<webchatBTL.Models.Company>
+
+@{
+    ViewData["Title"] = "Danh sách công ty";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Domain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>Subscription Plans</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Domain)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedAt)
+                    </td>
+                        <td>
+                            @if (item.CompanySubscriptions != null)
+                            {
+                                <ul style="list-style:none">
+                                    @foreach (var subscription in item.CompanySubscriptions)
+                                    {
+                                        <li>@subscription.Plan.PlanName</li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p>Chưa đăng ký dich vụ</p>
+                            }
+                        </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.CompanyId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.CompanyId">Details</a> |
+                        <a asp-action="Subscribe" asp-route-id="@item.CompanyId">Subscribe</a>
+                        @* | <a asp-action="Delete" asp-route-id="@item.CompanyId">Delete</a> *@
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

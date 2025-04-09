@@ -1,0 +1,871 @@
+<!-- Start User chat -->
+<div class="user-chat w-100 overflow-hidden">
+    <div class="d-lg-flex">
+
+        <!-- start chat conversation section -->
+        <div class="w-100 overflow-hidden position-relative">
+            <div class="p-3 p-lg-4 border-bottom user-chat-topbar">
+                <div class="row align-items-center">
+                    <div class="col-sm-4 col-8">
+                        <div class="d-flex align-items-center">
+                            <div class="d-block d-lg-none me-2 ms-0">
+                                <a href="javascript: void(0);" class="user-chat-remove text-muted font-size-16 p-2"><i class="ri-arrow-left-s-line"></i></a>
+                            </div>
+                            <div class="me-3 ms-0">
+                                <img src="assets/images/users/avatar-4.jpg" class="rounded-circle avatar-xs" alt="">
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <h5 class="font-size-16 mb-0 text-truncate"><a href="#" class="text-reset user-profile-show">Doris Brown</a> <i class="ri-record-circle-fill font-size-10 text-success d-inline-block ms-1"></i></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-4">
+                        <ul class="list-inline user-chat-nav text-end mb-0">
+                            <li class="list-inline-item">
+                                <div class="dropdown">
+                                    <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="ri-search-line"></i>
+                                    </button>
+                                    <div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-md">
+                                        <div class="search-box p-2">
+                                            <input type="text" class="form-control bg-light border-0" placeholder="Search..">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-inline-item d-none d-lg-inline-block me-2 ms-0">
+                                <button type="button" class="btn nav-btn user-profile-show">
+                                    <i class="ri-user-2-line"></i>
+                                </button>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <div class="dropdown">
+                                    <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="ri-more-fill"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item d-block d-lg-none user-profile-show" href="#">View profile <i class="ri-user-2-line float-end text-muted"></i></a>
+                                        <a class="dropdown-item d-block d-lg-none" href="#" data-bs-toggle="modal" data-bs-target="#audiocallModal">Audio <i class="ri-phone-line float-end text-muted"></i></a>
+                                        <a class="dropdown-item d-block d-lg-none" href="#" data-bs-toggle="modal" data-bs-target="#videocallModal">Video <i class="ri-vidicon-line float-end text-muted"></i></a>
+                                        <a class="dropdown-item" href="#">Archive <i class="ri-archive-line float-end text-muted"></i></a>
+                                        <a class="dropdown-item" href="#">Muted <i class="ri-volume-mute-line float-end text-muted"></i></a>
+                                        <a class="dropdown-item" href="#">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- end chat user head -->
+            <!-- start chat conversation -->
+            <div class="chat-conversation p-3 p-lg-4" data-simplebar="init">
+                <ul class="list-unstyled mb-0">
+                    <li>
+                        <div class="conversation-list">
+                            <div class="chat-avatar">
+                                <img src="assets/images/users/avatar-4.jpg" alt="">
+                            </div>
+
+                            <div class="user-chat-content">
+                                <div class="ctext-wrap">
+                                    <div class="ctext-wrap-content">
+                                        <p class="mb-0">
+                                            Good morning
+                                        </p>
+                                        <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:00</span></p>
+                                    </div>
+                                    <div class="dropdown align-self-start">
+                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="ri-more-2-fill"></i>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Copy <i class="ri-file-copy-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Save <i class="ri-save-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Forward <i class="ri-chat-forward-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="conversation-name">Doris Brown</div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="right">
+                        <div class="conversation-list">
+                            <div class="chat-avatar">
+                                <img src="assets/images/users/avatar-1.jpg" alt="">
+                            </div>
+
+                            <div class="user-chat-content">
+                                <div class="ctext-wrap">
+                                    <div class="ctext-wrap-content">
+                                        <p class="mb-0">
+                                            Good morning, How are you? What about our next meeting?
+                                        </p>
+                                        <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:02</span></p>
+                                    </div>
+
+                                    <div class="dropdown align-self-start">
+                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="ri-more-2-fill"></i>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Copy <i class="ri-file-copy-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Save <i class="ri-save-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Forward <i class="ri-chat-forward-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="conversation-name">Patricia Smith</div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="chat-day-title">
+                            <span class="title">Today</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="conversation-list">
+                            <div class="chat-avatar">
+                                <img src="assets/images/users/avatar-4.jpg" alt="">
+                            </div>
+
+                            <div class="user-chat-content">
+
+                                <div class="ctext-wrap">
+                                    <div class="ctext-wrap-content">
+                                        <p class="mb-0">
+                                            Yeah everything is fine
+                                        </p>
+                                        <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:05</span></p>
+                                    </div>
+                                    <div class="dropdown align-self-start">
+                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="ri-more-2-fill"></i>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Copy <i class="ri-file-copy-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Save <i class="ri-save-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Forward <i class="ri-chat-forward-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ctext-wrap">
+                                    <div class="ctext-wrap-content">
+                                        <p class="mb-0">
+                                            & Next meeting tomorrow 10.00AM
+                                        </p>
+                                        <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:05</span></p>
+                                    </div>
+                                    <div class="dropdown align-self-start">
+                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="ri-more-2-fill"></i>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Copy <i class="ri-file-copy-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Save <i class="ri-save-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Forward <i class="ri-chat-forward-line float-end text-muted"></i></a>
+                                            <a class="dropdown-item" href="#">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="conversation-name">Doris Brown</div>
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- end chat conversation end -->
+
+            <!-- start chat input section -->
+            <div class="chat-input-section p-3 p-lg-4 border-top mb-0">
+
+                <div class="row g-0">
+
+                    <div class="col">
+                        <input type="text" class="form-control form-control-lg bg-light border-light" placeholder="Enter Message...">
+                    </div>
+                    <div class="col-auto">
+                        <div class="chat-input-links ms-md-2 me-md-0">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Emoji">
+                                    <button type="button" class="btn btn-link text-decoration-none font-size-16 btn-lg waves-effect">
+                                        <i class="ri-emotion-happy-line"></i>
+                                    </button>
+                                </li>
+                                <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Attached File">
+                                    <button type="button" class="btn btn-link text-decoration-none font-size-16 btn-lg waves-effect">
+                                        <i class="ri-attachment-line"></i>
+                                    </button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button type="submit" class="btn btn-primary font-size-16 btn-lg chat-send waves-effect waves-light">
+                                        <i class="ri-send-plane-2-fill"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end chat input section -->
+        </div>
+        <!-- end chat conversation section -->
+        <!-- start User profile detail sidebar -->
+        <div class="user-profile-sidebar">
+            <div class="px-3 px-lg-4 pt-3 pt-lg-4">
+                <div class="user-chat-nav text-end">
+                    <button type="button" class="btn nav-btn" id="user-profile-hide">
+                        <i class="ri-close-line"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center p-4 border-bottom">
+                <div class="mb-4">
+                    <img src="assets/images/users/avatar-4.jpg" class="rounded-circle avatar-lg img-thumbnail" alt="">
+                </div>
+
+                <h5 class="font-size-16 mb-1 text-truncate">Doris Brown</h5>
+                <p class="text-muted text-truncate mb-1"><i class="ri-record-circle-fill font-size-10 text-success me-1 ms-0"></i> Active</p>
+            </div>
+            <!-- End profile user -->
+            <!-- Start user-profile-desc -->
+            <div class="p-4 user-profile-desc" data-simplebar>
+                <div class="text-muted">
+                    <p class="mb-4">If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual.</p>
+                </div>
+
+                <div class="accordion" id="myprofile">
+
+                    <div class="accordion-item card border mb-2">
+                        <div class="accordion-header" id="about3">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#aboutprofile" aria-expanded="true" aria-controls="aboutprofile">
+                                <h5 class="font-size-14 m-0">
+                                    <i class="ri-user-2-line me-2 ms-0 align-middle d-inline-block"></i> About
+                                </h5>
+                            </button>
+                        </div>
+                        <div id="aboutprofile" class="accordion-collapse collapse show" aria-labelledby="about3" data-bs-parent="#myprofile">
+                            <div class="accordion-body">
+                                <div>
+                                    <p class="text-muted mb-1">Name</p>
+                                    <h5 class="font-size-14">Doris Brown</h5>
+                                </div>
+
+                                <div class="mt-4">
+                                    <p class="text-muted mb-1">Email</p>
+                                    <h5 class="font-size-14">adc@123.com</h5>
+                                </div>
+
+                                <div class="mt-4">
+                                    <p class="text-muted mb-1">Time</p>
+                                    <h5 class="font-size-14">11:40 AM</h5>
+                                </div>
+
+                                <div class="mt-4">
+                                    <p class="text-muted mb-1">Location</p>
+                                    <h5 class="font-size-14 mb-0">California, USA</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item card border">
+                        <div class="accordion-header" id="attachfile3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#attachprofile" aria-expanded="false" aria-controls="attachprofile">
+                                <h5 class="font-size-14 m-0">
+                                    <i class="ri-attachment-line me-2 ms-0 align-middle d-inline-block"></i> Attached Files
+                                </h5>
+                            </button>
+                        </div>
+                        <div id="attachprofile" class="accordion-collapse collapse" aria-labelledby="attachfile3" data-bs-parent="#myprofile">
+                            <div class="accordion-body">
+                                <div class="card p-2 border mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-sm me-3 ms-0">
+                                            <div class="avatar-title bg-primary-subtle text-primary rounded font-size-20">
+                                                <i class="ri-file-text-fill"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="text-start">
+                                                <h5 class="font-size-14 mb-1">admin_v1.0.zip</h5>
+                                                <p class="text-muted font-size-13 mb-0">12.5 MB</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="ms-4 me-0">
+                                            <ul class="list-inline mb-0 font-size-18">
+                                                <li class="list-inline-item">
+                                                    <a href="#" class="text-muted px-1">
+                                                        <i class="ri-download-2-line"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item dropdown">
+                                                    <a class="dropdown-toggle text-muted px-1" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="ri-more-fill"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <a class="dropdown-item" href="#">Action</a>
+                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card p-2 border mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-sm me-3 ms-0">
+                                            <div class="avatar-title bg-primary-subtle text-primary rounded font-size-20">
+                                                <i class="ri-image-fill"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="text-start">
+                                                <h5 class="font-size-14 mb-1">Image-1.jpg</h5>
+                                                <p class="text-muted font-size-13 mb-0">4.2 MB</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="ms-4 me-0">
+                                            <ul class="list-inline mb-0 font-size-18">
+                                                <li class="list-inline-item">
+                                                    <a href="#" class="text-muted px-1">
+                                                        <i class="ri-download-2-line"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item dropdown">
+                                                    <a class="dropdown-toggle text-muted px-1" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="ri-more-fill"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <a class="dropdown-item" href="#">Action</a>
+                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card p-2 border mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-sm me-3 ms-0">
+                                            <div class="avatar-title bg-primary-subtle text-primary rounded font-size-20">
+                                                <i class="ri-image-fill"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="text-start">
+                                                <h5 class="font-size-14 mb-1">Image-2.jpg</h5>
+                                                <p class="text-muted font-size-13 mb-0">3.1 MB</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="ms-4 me-0">
+                                            <ul class="list-inline mb-0 font-size-18">
+                                                <li class="list-inline-item">
+                                                    <a href="#" class="text-muted px-1">
+                                                        <i class="ri-download-2-line"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item dropdown">
+                                                    <a class="dropdown-toggle text-muted px-1" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="ri-more-fill"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <a class="dropdown-item" href="#">Action</a>
+                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card p-2 border mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-sm me-3 ms-0">
+                                            <div class="avatar-title bg-primary-subtle text-primary rounded font-size-20">
+                                                <i class="ri-file-text-fill"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="text-start">
+                                                <h5 class="font-size-14 mb-1">Landing-A.zip</h5>
+                                                <p class="text-muted font-size-13 mb-0">6.7 MB</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="ms-4 me-0">
+                                            <ul class="list-inline mb-0 font-size-18">
+                                                <li class="list-inline-item">
+                                                    <a href="#" class="text-muted px-1">
+                                                        <i class="ri-download-2-line"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item dropdown">
+                                                    <a class="dropdown-toggle text-muted px-1" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="ri-more-fill"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <a class="dropdown-item" href="#">Action</a>
+                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end profile-user-accordion -->
+                </div>
+                <!-- end user-profile-desc -->
+            </div>
+            <!-- end User profile detail sidebar -->
+        </div>
+    </div>
+    <!-- End User chat -->
+    <!-- audiocall Modal -->
+    <div class="modal fade" id="audiocallModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center p-4">
+                        <div class="avatar-lg mx-auto mb-4">
+                            <img src="assets/images/users/avatar-4.jpg" alt="" class="img-thumbnail rounded-circle">
+                        </div>
+
+                        <h5 class="text-truncate">Doris Brown</h5>
+                        <p class="text-muted">Start Audio Call</p>
+
+                        <div class="mt-5">
+                            <ul class="list-inline mb-1">
+                                <li class="list-inline-item px-2 me-2 ms-0">
+                                    <button type="button" class="btn btn-danger avatar-sm rounded-circle" data-bs-dismiss="modal">
+                                        <span class="avatar-title bg-transparent font-size-20">
+                                            <i class="ri-close-fill"></i>
+                                        </span>
+                                    </button>
+                                </li>
+                                <li class="list-inline-item px-2">
+                                    <button type="button" class="btn btn-success avatar-sm rounded-circle">
+                                        <span class="avatar-title bg-transparent font-size-20">
+                                            <i class="ri-phone-fill"></i>
+                                        </span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- audiocall Modal -->
+    <!-- videocall Modal -->
+    <div class="modal fade" id="videocallModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center p-4">
+                        <div class="avatar-lg mx-auto mb-4">
+                            <img src="assets/images/users/avatar-4.jpg" alt="" class="img-thumbnail rounded-circle">
+                        </div>
+
+                        <h5 class="text-truncate">Doris Brown</h5>
+                        <p class="text-muted mb-0">Start Video Call</p>
+
+                        <div class="mt-5">
+                            <ul class="list-inline mb-1">
+                                <li class="list-inline-item px-2 me-2 ms-0">
+                                    <button type="button" class="btn btn-danger avatar-sm rounded-circle" data-bs-dismiss="modal">
+                                        <span class="avatar-title bg-transparent font-size-20">
+                                            <i class="ri-close-fill"></i>
+                                        </span>
+                                    </button>
+                                </li>
+                                <li class="list-inline-item px-2">
+                                    <button type="button" class="btn btn-success avatar-sm rounded-circle">
+                                        <span class="avatar-title bg-transparent font-size-20">
+                                            <i class="ri-vidicon-fill"></i>
+                                        </span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>@{
+    ViewData["Title"] = "Chat Page";
+}
+
+<head>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assetschat/images/favicon.ico">
+
+    <!-- magnific-popup css -->
+    <link href="~/assetschat/libs/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="~/assetschat/libs/owl.carousel/assets/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="~/assetschat/libs/owl.carousel/assets/owl.theme.default.min.css">
+
+    <!-- Bootstrap Css -->
+    <link href="~/assetschat/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="~/assetschat/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="~/assetschat/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+</head>
+
+<body data-bs-theme="dark">
+    <div class="layout-wrapper d-lg-flex">
+
+        @await Html.PartialAsync("_LeftSidebarMenuPartial.cshtml")
+
+        @await Html.PartialAsync("_ChatLeftSidebar.cshtml")
+
+        @await Html.PartialAsync("_UserChat.cshtml")
+        
+    </div>
+
+    @section Scripts {
+        <script>
+            // Search User
+            document.addEventListener("DOMContentLoaded", function () {
+                document.getElementById("searchUser").addEventListener("keyup", function () {
+                    
+                    const searchQuery = document.getElementById("searchUser").value;
+                    console.log(searchQuery);
+
+                    fetch(`/ChatHub/SearchUsers?searchQuery=${searchQuery}`)
+                        .then(response => response.json())
+                        .then(data => {
+                                const userList = document.getElementById('userList');
+                                userList.innerHTML = ""; //Xóa kết quả cũ
+
+                                if (data.success && data.data["$values"].length > 0) {
+                                    data.data["$values"].forEach(userInfo => {
+                                        if (userInfo.unreadCount > 0) {
+                                            const li = document.createElement('li');
+                                            li.classList.add('unread');
+                                            li.innerHTML = `
+                                                 <a href="#">
+                                                    <div class="d-flex">
+                                                        <div class="chat-user-img away align-self-center me-3 ms-0">
+                                                            <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar-xs" alt="">
+                                                            <span class="user-status"></span>
+                                                        </div>
+                                                        <div class="flex-grow-1 overflow-hidden">
+                                                            <h5 class="text-truncate font-size-15 mb-1">${userInfo.user.fullName}</h5>
+                                                            <p class="chat-user-message text-truncate mb-0">${userInfo.lastMessage.content}</p>
+                                                        </div>
+                                                        <div class="font-size-11">
+                                                            ${calculateLastMessageTime(userInfo.lastMessage.sentAt)}
+                                                        </div>
+                                                        <div class="unread-message">
+                                                            <span class="badge badge-soft-danger rounded-pill">${userInfo.unreadCount}</span>
+                                                        </div>
+                                                   </div>
+                                                 
+                                                 </a>`;
+                                            userList.appendChild(li);
+                                        }
+                                        else {
+                                            const li = document.createElement('li');
+                                            li.innerHTML = `
+                                                <a href="#">
+                                                    <div class="d-flex">
+                                                        <div class="chat-user-img away align-self-center me-3 ms-0">
+                                                            <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar-xs" alt="">
+                                                            <span class="user-status"></span>
+                                                        </div>
+                                                        <div class="flex-grow-1 overflow-hidden">
+                                                            <h5 class="text-truncate font-size-15 mb-1">${userInfo.user.fullName}</h5>
+                                                            <p class="chat-user-message text-truncate mb-0">${userInfo.lastMessage.content}</p>
+                                                        </div>
+                                                        <div class="font-size-11">
+                                                            ${calculateLastMessageTime(userInfo.lastMessage.sentAt)}
+                                                        </div>
+                                                    </div>
+                                                </a>`;
+                                            userList.appendChild(li);
+                                        }
+                                    });
+                                } else {
+                                    userList.innerHTML = "<p>No users found.</p>";
+                                }
+                            })
+                            .catch(error => console.error("Error fetching users:", error)); 
+                });
+            });
+
+            // Search Group
+            function searchGroup(searchQueryGroup) {
+                console.log(searchQueryGroup)
+                fetch(`/ChatHub/SearchGroups?searchQueryGroup=${searchQueryGroup}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const groupList = document.getElementById("groupList");
+                        groupList.innerHTML = ""; // Xóa danh sách cũ
+
+                        // Kiểm tra xem dữ liệu có hợp lệ không
+                        if (data.success && data.groups["$values"].length > 0) {
+                            data.groups["$values"].forEach(group => {
+                                // Tạo một phần tử <li> mới cho mỗi nhóm
+                                const li = document.createElement("li");
+                                li.innerHTML = `<li>
+                                                    <a href="#">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="chat-user-img me-3 ms-0">
+                                                                <div class="avatar-xs">
+                                                                    <span class="avatar-title rounded-circle bg-primary-subtle text-primary">
+                                                                        ${group.groupName.charAt(0).toUpperCase()}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="text-truncate font-size-14 mb-0">${group.groupName}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                 </li>`
+                                groupList.appendChild(li);
+                            });
+                        } else {
+                            // Hiển thị thông báo nếu không có kết quả tìm kiếm
+                            const li = document.createElement("li");
+                            li.innerHTML = "No groups found";
+                            groupList.appendChild(li);
+                        }
+                    })
+                    .catch(error => console.error("Error searching groups:", error));
+            }
+
+            // Search All User (Contacts)
+            function searchAllUsers(searchAllUser) {
+                console.log(searchAllUser);
+                fetch(`/ChatHub/SearchAllUsers?searchAllUser=${searchAllUser}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        const userList = document.getElementById('searchAllUser');
+                        userList.innerHTML = '';
+
+                        // Kiểm tra nếu có dữ liệu hợp lệ
+                        if (data.success && Object.keys(data.data).length > 0) {
+                            // Duyệt qua từng nhóm (H, T, ...)
+                            Object.keys(data.data).forEach(key => {
+                                if (key === "$id") return; // Bỏ qua key $id không mong muốn
+
+                                const users = data.data[key]["$values"]; // Nhóm người dùng theo chữ cái đầu tiên
+
+                                // Tạo phần tử nhóm
+                                const groupHeader = document.createElement("div");
+                                groupHeader.classList.add("mt-3");
+                                groupHeader.innerHTML = `<div class="p-3 fw-bold text-primary">${key.toUpperCase()}</div>`;
+                                userList.appendChild(groupHeader);
+
+                                // Tạo danh sách người dùng trong nhóm
+                                const ul = document.createElement("ul");
+                                ul.classList.add("list-unstyled", "contact-list");
+                                userList.appendChild(ul);
+
+                                // Duyệt qua từng người dùng trong nhóm
+                                users.forEach(user => {
+                                    const li = document.createElement("li");
+                                    li.innerHTML = `
+                                        <div class="d-flex align-items-center">
+                                          <div class="flex-grow-1">
+                                            <h5 class="font-size-14 m-0">${user.fullName}</h5>
+                                          </div>
+                                          <div class="dropdown">
+                                            <a href="#" class="text-muted dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              <i class="ri-more-2-fill"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                              <a class="dropdown-item" href="#"><i class="ri-share-line float-end text-muted"></i> Share</a>
+                                              <a class="dropdown-item" href="#"><i class="ri-forbid-line float-end text-muted"></i> Block</a>
+                                              <a class="dropdown-item" href="#"><i class="ri-delete-bin-line float-end text-muted"></i> Remove</a>
+                                            </div>
+                                          </div>
+                                        </div> `;
+                                    ul.appendChild(li);
+                                });
+                            });
+                        }
+                        else if(data.success == false) {
+                            const div = document.createElement("div");
+                            div.classList.add("mt-3");
+                            div.innerHTML = `<ul class="list-unstyled contact-list">
+                                                <li>Search for users to contact...</li>
+                                            </ul>`;
+                            userList.appendChild(div);
+                        }
+                    })
+                    .catch(error => console.error("Error fetching users:", error));
+            }
+
+
+            // Hàm để tính toán và hiển thị thời gian
+            function calculateLastMessageTime(sentAt) {
+                const sentTime = new Date(sentAt);
+                const now = new Date();
+                const timeDiff = (now - sentTime) / 1000 / 60; // Tính chênh lệch thời gian (phút)
+
+                if (timeDiff < 60) {
+                    // Nếu thời gian dưới 60 phút, hiển thị bằng phút
+                    return `${Math.floor(timeDiff)} min`;
+                } else if (timeDiff < 1440) {
+                    // Nếu thời gian dưới 24 giờ, hiển thị bằng giờ
+                    const hours = Math.floor(timeDiff / 60);
+                    return `${hours} hour`;
+                } else {
+                    // Nếu lớn hơn 24 giờ, hiển thị định dạng MM/dd/yyyy hh:mm
+                    return sentTime.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    }) + ' ' + sentTime.toLocaleTimeString('en-US', {
+                        hour12: false,
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                }
+            }
+
+        </script>
+
+    }
+        
+        <!-- JAVASCRIPT -->
+        <script src="~/assetschat/libs/jquery/jquery.min.js"></script>
+        <script src="~/assetschat/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="~/assetschat/libs/simplebar/simplebar.min.js"></script>
+        <script src="~/assetschat/libs/node-waves/waves.min.js"></script>
+
+        <!-- Magnific Popup-->
+		<script src="~/assetschat/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- owl.carousel js -->
+		<script src="~/assetschat/libs/owl.carousel/owl.carousel.min.js"></script>
+
+        <!-- page init -->
+		<script src="~/assetschat/js/pages/index.init.js"></script>
+
+        <script src="~/assetschat/js/app.js"></script>
+
+<div>
+    <input type="text" id="userInput" placeholder="Tên bạn" />
+    <input type="text" id="messageInput" placeholder="Nhập tin nhắn..." />
+    <button id="sendBtn">Gửi</button>
+</div>
+<div id="chat-box" style="margin-top: 20px;"></div>
+
+
+</body>
+
+
+    </div>
+    <!-- end modal -->
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chathub")
+        .build();
+
+    connection.on("ReceiveMessage", function (user, message) {
+        const msg = document.createElement("div");
+        msg.innerHTML = `<b>${user}</b>: ${message}`;
+        document.getElementById("chat-box").appendChild(msg);
+    });
+
+    connection.start().catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    document.getElementById("sendBtn").addEventListener("click", function (event) {
+        const user = document.getElementById("userInput").value;
+        const message = document.getElementById("messageInput").value;
+        connection.invoke("SendMessage", user, message).catch(function (err) {
+            return console.error(err.toString());
+        });
+        event.preventDefault();
+    });
+</script>
+<!-- SignalR client -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chathub")
+        .build();
+
+    connection.on("ReceiveMessage", function (user, message) {
+        const msgBox = document.createElement("li");
+        msgBox.className = "conversation-list"; // hoặc tùy vào CSS bạn dùng
+        msgBox.innerHTML = `
+            <div class="user-chat-content">
+                <div class="ctext-wrap">
+                    <div class="ctext-wrap-content">
+                        <p class="mb-0">${message}</p>
+                        <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">${new Date().toLocaleTimeString()}</span></p>
+                    </div>
+                    <div class="conversation-name">${user}</div>
+                </div>
+            </div>
+        `;
+        document.querySelector(".chat-conversation ul").appendChild(msgBox);
+    });
+
+    connection.start().catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    document.querySelector(".chat-send").addEventListener("click", function (event) {
+        const messageInput = document.querySelector("input[placeholder='Enter Message...']");
+        const message = messageInput.value;
+        const user = '@User.Identity.Name'; // Razor sẽ render username
+
+        if (message.trim() !== "") {
+            connection.invoke("SendMessage", user, message).catch(function (err) {
+                return console.error(err.toString());
+            });
+            messageInput.value = "";
+        }
+        event.preventDefault();
+    });
+</script>
+
+
+<!-- end  layout wrapper -->

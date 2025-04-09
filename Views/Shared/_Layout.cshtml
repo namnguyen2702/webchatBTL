@@ -7,6 +7,7 @@
     <title>@ViewData["Title"] - BTL</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/custom.css" />
 
     <style>
         /* Navbar tổng thể */
@@ -81,9 +82,12 @@
                         <ul class="navbar-nav flex-grow-1 justify-content-between">
                             <li class="nav-item-1 d-flex align-items-center">
                                 <a class="nav-link-1" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                <a class="nav-link-1" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
-                                <a class="nav-link-1" asp-area="" asp-controller="Event" asp-action="Index">Lịch làm
-                                    việc</a>
+                                @if(User.IsInRole("Admin"))
+                                {
+                                    <a class="nav-link-1" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
+                                }                                
+                                <a class="nav-link-1" asp-area="" asp-controller="Event" asp-action="Index">Work Schedule</a>
+                                <a class="nav-link-1" asp-area="" asp-controller="/Chat.html" asp-action="Index">Live Chat</a>
                             </li>
                             <li class="nav-item-1">
                                 <a class="btn-custom" href="/tai-khoan-cua-toi.html">Account</a>

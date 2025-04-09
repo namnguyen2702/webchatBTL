@@ -354,3 +354,7 @@ D:\SoureVSCode\WebchatBTL\webchatBTL\obj\Debug\net8.0\refint\webchatBTL.dll
 D:\SoureVSCode\WebchatBTL\webchatBTL\obj\Debug\net8.0\webchatBTL.pdb
 D:\SoureVSCode\WebchatBTL\webchatBTL\obj\Debug\net8.0\webchatBTL.genruntimeconfig.cache
 D:\SoureVSCode\WebchatBTL\webchatBTL\obj\Debug\net8.0\ref\webchatBTL.dll
+D:\SoureVSCode\WebchatBTL\webchatBTL\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\SoureVSCode\WebchatBTL\webchatBTL\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\SoureVSCode\WebchatBTL\webchatBTL\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+D:\SoureVSCode\WebchatBTL\webchatBTL\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
