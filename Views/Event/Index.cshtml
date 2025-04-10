@@ -1,0 +1,593 @@
+@{
+    ViewBag.Title = "Index";
+}
+
+@* <h2>Index</h2> *@
+
+<div style="margin-top: 46px" id="calender"></div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-between align-items-center">
+            <h4 class="modal-title mb-0">
+                <i class="fa fa-calendar-alt"></i> <span id="eventTitle"></span>
+            </h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 28px;">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+            <div class="modal-body">
+                <div class="text-right mt-2 mb-2">
+                <button id="btnEdit" class="btn btn-outline-primary btn-sm mr-2">
+                    <i class="fas fa-edit"></i> Edit
+                </button>
+                <button id="btnDelete" class="btn btn-outline-danger btn-sm">
+                    <i class="fas fa-trash-alt"></i> Remove
+                </button>
+            </div>
+
+                <p id="pDetails"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModalSave" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-between align-items-center">
+                <h4 class="modal-title mb-0">
+                    <i class="fa fa-plus-circle text-success"></i> Save Event
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 28px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <input type="hidden" id="hdEventID" value="0" />
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" id="txtSubject" class="form-control" />
+                    </div>
+                    @* <div class="form-group">
+                    <label>Start</label>
+                    <div class="input-group date" id="dtp1">
+                    <input type="text" id="txtStart" class="form-control" />
+                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    </div>
+                    </div> *@
+                    <div class="form-group">
+                        <label for="txtStart">Start</label>
+                        <div class="input-group date" id="dtp1">
+                            <input type="text" id="txtStart" class="form-control datetimepicker-input" data-target="#dtp1" />
+                            <div class="input-group-append" data-target="#dtp1" data-toggle="datetimepicker">
+                                <span class="input-group-text">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @* <div class="checkbox">
+                            <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  Is Full Day event</label>
+                        </div> *@
+                    </div>
+                    @* <div class="form-group" id="divEndDate">
+                    <label>End</label>
+                    <div class="input-group date" id="dtp2">
+                    <input type="text" id="txtEnd" class="form-control" />
+                    <span class="input-group-addon">
+                    <span class="f glyphicon-calendar"></span>
+                    </span>
+                    </div>
+                    </div> *@
+                    <div class="form-group" id="divEndDate">
+                        <label for="txtEnd">End</label>
+                        <div class="input-group date" id="dtp2">
+                            <input type="text" id="txtEnd" class="form-control datetimepicker-input" data-target="#dtp2" />
+                            <div class="input-group-append" data-target="#dtp2" data-toggle="datetimepicker">
+                                <span class="input-group-text">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="txtDescription" rows="3" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Theme Color</label>
+                        <select id="ddThemeColor" class="form-control">
+                            <option value="">Default</option>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="black">Black</option>
+                            <option value="green">Green</option>
+                        </select>
+                    </div>
+                    <!-- Chọn người dùng -->
+                    @* <div class="form-group" id="userSelectContainer" style="display:none;">
+                    <label for="userSelect">Select User</label>
+                    <select id="userSelect" name="userId" style="width: 100%;">
+                    <!-- Options sẽ được điền vào từ API hoặc database -->
+                    </select>
+                    </div> *@
+
+                    <!-- Chọn nhóm -->
+                    <div class="form-group" id="groupSelectContainer" style="display:none;">
+                        <label for="groupSelect">Choose Group:</label>
+                        <select id="groupSelect" name="groupId">
+                            <!-- Các nhóm sẽ được thêm vào đây thông qua JavaScript -->
+                        </select>
+                    </div>
+
+                    <button id="btnSave" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #myModal .modal-header {
+        background-color: #f5f5f5;
+        padding: 15px 20px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #myModal .modal-title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    #myModal .modal-body {
+        padding: 20px;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    #myModal .modal-body p {
+        margin-bottom: 10px;
+    }
+
+    #myModal .modal-body p b {
+        display: inline-block;
+        width: 80px;
+        color: #333;
+    }
+
+    #myModal .modal-body .btn {
+        margin-left: 10px;
+    }
+
+    #myModal .modal-footer {
+        border-top: 1px solid #ddd;
+        padding: 12px 20px;
+        text-align: right;
+    }
+    /* Đảm bảo chiều cao modal không vượt quá 60vh */
+    #myModalSave .modal-dialog {
+        max-height: 90vh; /* Cài đặt chiều cao tối đa cho modal */
+        overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung vượt quá */
+    }
+
+    /* Thiết lập phần thân modal có thể cuộn */
+    #myModalSave .modal-body {
+        max-height: 80vh; /* Cài đặt chiều cao tối đa cho thân modal */
+        overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung dài */
+    }
+    .fc-event {
+        border-radius: 6px !important;
+        padding: 3px 6px !important;
+        font-size: 13px;
+        font-weight: 500;
+        color: white !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        border: none !important;
+    }
+
+    .fc-event:hover {
+        filter: brightness(1.15);
+        transform: scale(1.02);
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+    }
+
+    /* Ví dụ: mỗi màu có style riêng nếu bạn muốn */
+    .fc-event.red {
+        background-color: #e74c3c !important;
+    }
+
+    .fc-event.green {
+        background-color: #27ae60 !important;
+    }
+
+    .fc-event.blue {
+        background-color: #3498db !important;
+    }
+
+    .fc-event.black {
+        background-color: #2c3e50 !important;
+    }
+
+    /* Ngày hôm nay nổi bật hơn */
+    .fc-today {
+        background-color: #f0f8ff !important;
+    }
+
+</style>
+
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
+@* <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" /> *@
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css">
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script> *@
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            
+
+            // Gọi API để lấy danh sách nhóm
+            $.ajax({
+                url: '/api/dropdown/groupInCompanies',
+                method: 'GET',
+                success: function (response) {
+                    console.log(response);  // Xử lý kết quả trả về
+                    console.log(response.$values);  // Xử lý kết quả trả về
+                    // Giả sử bạn có một dropdown hoặc list để hiển thị nhóm
+                    var groupSelect = $('#groupSelect');
+                    groupSelect.empty();  // Xóa các tùy chọn cũ
+                    groupSelect.append('<option value="">Select a Group</option>'); // Thêm một option mặc định
+
+                    // Duyệt qua danh sách nhóm và thêm vào dropdown
+                    // FIX: kiểm tra nếu là array thì dùng trực tiếp, nếu không thì fallback về $values hoặc []
+                    var groupArray = Array.isArray(response) ? response : (response?.$values || []);
+
+                    groupArray.forEach(function (group) {
+                        $('#groupSelect').append('<option value="' + group.groupId + '">' + group.groupName + '</option>');
+                    });
+
+                    // groupSelect.select2(); // Khởi tạo Select2
+                }
+            });
+
+            // Hiển thị các dropdown nếu là Admin hoặc Manager
+            $.ajax({
+                url: '/event/getUserInfo',  // Đường dẫn API bạn đã tạo
+                method: 'GET',
+                success: function (response) {
+                    const userId = response.userId;
+                    const role = response.role;
+                    console.log('User ID:', userId);
+                    console.log('Role:', role);
+
+                    // Tùy theo vai trò, bạn có thể thay đổi giao diện người dùng
+                    if(role === 'Admin' || role === 'Manager') {
+                        $('#userSelectContainer').show();  // Hiển thị chọn người dùng
+                        $('#groupSelectContainer').show();  // Hiển thị chọn nhóm
+                    } else {
+                        $('#userSelectContainer').hide();  // Ẩn chọn người dùng
+                        $('#groupSelectContainer').hide();  // Ẩn chọn nhóm
+                    }
+                },
+                error: function (error) {
+                    console.log('Error:', error);
+                }
+            });
+
+
+
+            var events = [];
+            var selectedEvent = null;
+            FetchEventAndRenderCalendar();
+
+            function FetchEventAndRenderCalendar() {
+    events = [];
+    $.ajax({
+        type: "GET",
+        url: "/event/GetEvents",
+        success: function (data) {
+            console.log(">>> Raw data from server:", data);
+            data.forEach((v, i) => {
+                if (!v || !v.title || !v.start) {
+                    console.warn(`⚠️ Sự kiện không hợp lệ ở vị trí ${i}:`, v);
+                    return;
+                }
+
+                events.push({
+                    id: v.id,
+                    title: v.title,
+                    start: v.start,                    // giữ nguyên ISO string
+                    end: v.end || null,
+                    description: v.description,
+                    color: v.color,
+                    allDay: v.allDay
+                });
+            });
+
+            console.log("✅ Final Events Array:", events);
+            GenerateCalender(events);
+        },
+        error: function (error) {
+            console.error("❌ Lỗi tải sự kiện:", error);
+        }
+    });
+}
+
+
+            function GenerateCalender(events) {
+            $('#calender').fullCalendar('destroy');
+
+            $('#calender').fullCalendar({
+                contentHeight: 505,
+                defaultDate: new Date(),
+                timeFormat: 'h(:mm)a',
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay,agenda'
+                },
+                eventLimit: true,
+                eventColor: '#378006',
+                events: events,
+
+                // ✅ Bổ sung xử lý nếu sự kiện lỗi
+                eventRender: function (event, element, view) {
+                    if (!event || !event.title || !event.start) {
+                        console.warn("❌ Không thể render sự kiện:", event);
+                        return false; // ngăn lỗi
+                    }
+
+                    if (event.description) {
+                        element.attr("title", event.description);
+                    }
+
+                    return true;
+                },
+
+                eventClick: function (calEvent, jsEvent, view) {
+                    if (!calEvent) return;
+
+                    selectedEvent = calEvent;
+                    $('#myModal #eventTitle').text(calEvent.title);
+
+                    var $description = $('<div/>');
+                    $description.append(`<p><i class="fa fa-play-circle"></i> <strong>Start:</strong> ${moment(calEvent.start).format("DD-MM-YYYY HH:mm A")}</p>`);
+
+                    if (calEvent.end) {
+                        $description.append(`<p><i class="fa fa-stop-circle"></i> <strong>End:</strong> ${moment(calEvent.end).format("DD-MM-YYYY HH:mm A")}</p>`);
+                    }
+
+                    $description.append(`<p><i class="fa fa-info-circle"></i> <strong>Description:</strong> ${calEvent.description}</p>`);
+                    $('#myModal #pDetails').empty().html($description);
+                    $('#myModal').modal();
+                },
+
+                selectable: true,
+                select: function (start, end) {
+                    selectedEvent = {
+                        id: 0,
+                        title: '',
+                        description: '',
+                        start: start,
+                        end: end,
+                        allDay: false,
+                        color: '',
+                        groupID: null
+                    };
+                    openAddEditForm();
+                    $('#calender').fullCalendar('unselect');
+                },
+
+                editable: true,
+                eventDrop: function (event) {
+                    let data = {
+                        eventId: event.id,
+                        Subject: event.title,
+                        Start: moment(event.start).format('DD/MM/YYYY HH:mm A'),
+                        End: event.end ? moment(event.end).format('DD/MM/YYYY HH:mm A') : null,
+                        Description: event.description,
+                        ThemeColor: event.color,
+                        IsFullDay: event.allDay,
+                        GroupId: event.groupID
+                    };
+                    SaveEvent(data);
+                }
+            });
+        }
+
+            $('#dtp1, #dtp2').datetimepicker({
+                format: 'DD/MM/YYYY HH:mm A',
+                icons: {
+                    time: 'fa fa-clock',
+                    date: 'fa fa-calendar',
+                    up: 'fa fa-chevron-up',
+                    down: 'fa fa-chevron-down',
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-calendar-check',
+                    clear: 'fa fa-trash',
+                    close: 'fa fa-times'
+                }
+            });
+            $('#dtp1').on('change.datetimepicker', function (e) {
+                // Lấy giá trị đã chọn
+                var selectedDate = e.date.format('DD/MM/YYYY HH:mm A');
+                console.log("Ngày giờ được chọn: ", selectedDate);
+
+                // Gán giá trị vào input
+                $('#txtStart').val(selectedDate);
+            });
+            $('#dtp2').on('change.datetimepicker', function (e) {
+                // Lấy giá trị đã chọn
+                var selectedDate = e.date.format('DD/MM/YYYY HH:mm A');
+                console.log("Ngày giờ được chọn: ", selectedDate);
+
+                // Gán giá trị vào input
+                $('#txtEnd').val(selectedDate);
+            });
+            $('#btnEdit').click(function () {
+                //Open modal dialog for edit event
+                openAddEditForm();
+            })
+            $('#btnDelete').click(function () {
+                if (selectedEvent != null && confirm('Are you sure?')) {
+                    $.ajax({
+                        type: "POST",
+                        url: '/event/DeleteEvent',
+                        data: { 'id': selectedEvent.id },
+                        success: function (data) {
+                            if (data.status) {
+                                FetchEventAndRenderCalendar();
+                                $('#myModal').modal('hide');
+                            }
+                        },
+                        error: function () {
+                            alert('Failed');
+                        }
+                    })
+                }
+            })
+            $('#dtp1,#dtp2').datetimepicker({
+                format: 'DD/MM/YYYY HH:mm A'
+            });
+            $('#chkIsFullDay').change(function () {
+            const isChecked = $(this).is(':checked');
+            if (isChecked) {
+                $('#divEndDate').hide();
+                let startVal = $('#txtStart').val();
+                if (startVal) {
+                    let start = moment(startVal, 'DD/MM/YYYY HH:mm A');
+                    let end = start.clone().set({ hour: 23, minute: 59 });
+                    $('#txtEnd').val(end.format('DD/MM/YYYY HH:mm A'));
+                }
+            } else {
+                $('#divEndDate').show();
+            }
+        });
+        $('#txtStart').on('change', function () {
+        if ($('#chkIsFullDay').is(':checked')) {
+            let start = moment($(this).val(), 'DD/MM/YYYY HH:mm A');
+            let end = start.clone().set({ hour: 23, minute: 59 });
+            $('#txtEnd').val(end.format('DD/MM/YYYY HH:mm A'));
+        }
+    });
+            function openAddEditForm() {
+            if (selectedEvent != null) {
+                $('#hdEventID').val(selectedEvent.id);
+                $('#txtSubject').val(selectedEvent.title);
+                $('#txtStart').val(moment(selectedEvent.start).format('DD/MM/YYYY HH:mm A'));
+
+                const isFullDay = selectedEvent.allDay || false;
+                $('#chkIsFullDay').prop("checked", isFullDay);
+
+                if (isFullDay) {
+                    $('#divEndDate').hide();
+
+                    // Auto set 23:59 same day as start
+                    const autoEnd = moment(selectedEvent.start).clone().set({ hour: 23, minute: 59 });
+                    $('#txtEnd').val(autoEnd.format('DD/MM/YYYY HH:mm A'));
+                } else {
+                    $('#divEndDate').show();
+                    $('#txtEnd').val(selectedEvent.end ? moment(selectedEvent.end).format('DD/MM/YYYY HH:mm A') : '');
+                }
+
+                $('#txtDescription').val(selectedEvent.description);
+                $('#ddThemeColor').val(selectedEvent.color);
+                $('#groupSelect').val(selectedEvent.groupID);
+            }
+            $('#myModal').modal('hide');
+            $('#myModalSave').modal();
+        }
+            $('#btnSave').click(function () {
+            if ($('#txtSubject').val().trim() === "") {
+                alert('Subject is required');
+                return;
+            }
+
+            if ($('#txtStart').val().trim() === "") {
+                alert('Start date is required');
+                return;
+            }
+
+            const isFullDay = $('#chkIsFullDay').is(':checked');
+            const startDate = moment($('#txtStart').val(), "DD/MM/YYYY HH:mm A");
+            let endDate = null;
+
+            if (isFullDay) {
+                endDate = startDate.clone().set({ hour: 23, minute: 59 });
+                $('#txtEnd').val(endDate.format('DD/MM/YYYY HH:mm A')); // đảm bảo input khớp
+            } else {
+                if ($('#txtEnd').val().trim() === "") {
+                    alert('End date is required');
+                    return;
+                }
+                endDate = moment($('#txtEnd').val(), "DD/MM/YYYY HH:mm A");
+
+                if (startDate.isAfter(endDate)) {
+                    alert('End date must be after start date');
+                    return;
+                }
+            }
+
+            const data = {
+                EventId: $('#hdEventID').val(),
+                Subject: $('#txtSubject').val().trim(),
+                Start: startDate.format('DD/MM/YYYY HH:mm A'),
+                End: endDate.format('DD/MM/YYYY HH:mm A'),
+                Description: $('#txtDescription').val(),
+                ThemeColor: $('#ddThemeColor').val(),
+                IsFullDay: isFullDay,
+                GroupId: $('#groupSelect').val() || null
+            };
+
+            SaveEvent(data);
+        });
+
+            function SaveEvent(data) {
+                $.ajax({
+                    type: "POST",
+                    url: '/event/SaveEvent',
+                    data: data,
+                    success: function (data) {
+                        if (data.status) {
+                            //Refresh the calender
+                            FetchEventAndRenderCalendar();
+                            $('#myModalSave').modal('hide');
+                            alert('Lưu sự kiện thành công');
+                        }
+                    },
+                    error: function () {
+                        alert('Failed');
+                    }
+                })
+            }
+        })
+    </script>
+}

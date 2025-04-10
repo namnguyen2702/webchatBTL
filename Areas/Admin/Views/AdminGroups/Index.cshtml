@@ -1,0 +1,66 @@
+﻿@model IEnumerable<webchatBTL.Models.Group>
+
+@{
+	ViewData["Title"] = "Quản lý nhóm";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="page-header">
+	<div class="header-sub-title">
+		<nav class="breadcrumb breadcrumb-dash">
+			<a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+			<span class="breadcrumb-item active">Danh sách tài khoản</span>
+		</nav>
+	</div>
+</div>
+
+<div class="col-lg-4 mb-5">
+	<a asp-action="Create" class="btn btn-primary">
+		<i class="anticon anticon-plus-circle m-r-5"></i>
+		<span>Create New</span>
+	</a>
+</div>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.GroupName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.CreatedAt)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.CreatedByNavigation)
+			</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.GroupName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.CreatedAt)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.CreatedByNavigation.Email)
+				</td>
+				<td>
+					<a style="font-size:25px" asp-action="Details" asp-route-id="@item.GroupId" title="Xem" class="btn btn-icon btn-hover btn-sm btn-rounded">
+						<i class="anticon anticon-eye"></i>
+					</a>
+					<a style="font-size:25px" asp-action="Edit" asp-route-id="@item.GroupId" title="Sửa" class="btn btn-icon btn-hover btn-sm btn-rounded">
+						<i class="anticon anticon-edit"></i>
+					</a>
+					<a style="font-size:25px" asp-action="Delete" asp-route-id="@item.GroupId" title="Xóa" class="btn btn-icon btn-hover btn-sm btn-rounded">
+						<i class="anticon anticon-delete"></i>
+					</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

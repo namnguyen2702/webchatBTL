@@ -1,3 +1,50 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+.navbar-brand1 {
+  color: white
+}
+
+.navbar-brand1:hover {
+  color: white !important;
+  opacity: 0.6 !important
+}
+
+.nav-link-1:hover {
+  color: white;
+  opacity: 0.6
+}
+
+.nav-item-1:hover {
+  color: yellow
+}
+
+a.navbar-brand1 {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
 html {
   font-size: 14px;
 }
@@ -8,15 +55,132 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.border-top {
+  border-top: 1px solid #e5e5e5;
 }
 
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
+  /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
+.footer1 {
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+  /* Vertically center the text there */
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.container-fluid {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-custom {
+  background-color: #d9534f;
+  /* Màu đỏ */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+  transition: background 0.3s ease;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #c9302c;
+  /* Màu đỏ đậm khi hover */
+  text-decoration: none;
+}
+
+.nav-item-1 {
+  display: flex;
+  gap: 10px;
+  /* Khoảng cách giữa các nút */
+}
+
+
+
+/*.bg-pri.list-group-item {
+    border: none;
+    padding: 15px;
+}
+
+    .list-group-item.active {
+        background-color: #dfe6e9;
+        color: black;
+    }
+
+.chat-header {
+    background-color: #f8f9fa;
+}
+
+.chat-body {
+    overflow-y: auto;
+    background-color: #f0f0f0;
+}
+
+.chat-footer {
+    position: relative;
+    bottom: 0;
+    background-color: #ffffff;
+}
+
+.bg-light {
+    background-color: #e9ecef !important;
+}
+
+.bg-primary {
+    background-color: #6c5ce7 !important;
+}
+
+.rounded-circle {
+    width: 40px;
+    height: 40px;
+}
+
+.bi {
+    font-size: 24px;
+    color: white;
+}mary .bi {
+    font-size: 24px;
+    color: white;
+}
+
+.mt-auto img {
+    width: 40px;
+    height: 40px;
+}
+
+.bg-success {
+    background-color: #00b894 !important;
+}*/

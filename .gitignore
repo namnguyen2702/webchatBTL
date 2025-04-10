@@ -1,0 +1,64 @@
+## 👉 FILE BUILD - KHÔNG CẦN THEO DÕI
+bin/
+obj/
+out/
+
+## 👉 THƯ VIỆN TẠM & GÓI NUGET
+packages/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## 👉 FILE CẤU HÌNH TẠM
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## 👉 FILE TẠM THỜI & DEBUG
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+*.pdb
+*.cache
+*.tmp
+*.bak
+*.db
+*.pidb
+
+## 👉 THƯ MỤC VS VÀ IDE
+.vscode/
+.vs/
+.idea/
+
+## 👉 FILE ĐẦU RA TẠM
+*.dll
+*.exe
+*.apphost.exe
+*.json.swp
+*.sourcemap
+*.mdb
+
+## 👉 FILE ĐĂNG NHẬP/SECRETS (nếu dùng)
+appsettings.Development.json
+secrets.json
+
+## 👉 FILE ZIP/PUBLISH
+*.zip
+publish/
+
+## 👉 THƯ MỤC BUILD TRONG ASP.NET
+wwwroot/dist/
+wwwroot/build/
+
+## 👉 NODE/NPM/NUGET (nếu dùng Frontend)
+node_modules/
+bower_components/
+.env
+.env.*
+
+## 👉 MAC OS / WINDOWS
+.DS_Store
+Thumbs.db
