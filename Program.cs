@@ -2,20 +2,26 @@ using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
 using Microsoft.EntityFrameworkCore;
 using webchatBTL.Models;
+// using webchatBTL.Hubs;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+});
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/dang-nhap.html";
         options.AccessDeniedPath = "/hanchetruycap.html";
     });
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
+
+builder.Services.AddSingleton<Microsoft.AspNetCore.SignalR.IUserIdProvider, CustomUserIdProvider>();
 
 // Đăng ký Notyf
 builder.Services.AddControllersWithViews();
@@ -53,6 +59,10 @@ app.UseRouting();
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

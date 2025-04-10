@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("webchatBTL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56ac39aa89388906692052db0cca3d733cb8040e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4eb2a07da6895c9616e17f71b03df18459940a0b")]
 [assembly: System.Reflection.AssemblyProductAttribute("webchatBTL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("webchatBTL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -528,4 +528,64 @@
     </div>
     <!-- end modal -->
 </div>
+<<<<<<< HEAD
+<input type="hidden" id="receiverId" />
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        const CURRENT_USER_ID = @ViewBag.UserProfile.UserId;
+
+        // Khởi tạo kết nối SignalR
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chathub")
+            .build();
+
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        // Nhận tin nhắn từ người khác
+        connection.on("ReceiveMessage", function (senderId, messageContent, sentAt) {
+            const isOwnMessage = senderId == CURRENT_USER_ID;
+
+            const msgItem = document.createElement("li");
+            msgItem.className = isOwnMessage ? "right" : "";
+
+            msgItem.innerHTML = `
+                <div class="conversation-list">
+                    <div class="chat-avatar"><img src="assets/images/users/avatar-1.jpg" alt=""></div>
+                    <div class="user-chat-content">
+                        <div class="ctext-wrap">
+                            <div class="ctext-wrap-content">
+                                <p class="mb-0">${messageContent}</p>
+                                <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i>
+                                    <span class="align-middle">${new Date(sentAt).toLocaleTimeString()}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            document.querySelector(".chat-conversation ul").appendChild(msgItem);
+        });
+
+        // Gửi tin nhắn
+        document.querySelector(".chat-send").addEventListener("click", function (event) {
+            const message = document.querySelector("input[placeholder='Enter Message...']").value;
+            const receiverId = localStorage.getItem("selectedReceiverId"); // Lưu ID người nhận khi chọn user
+
+            if (message.trim() !== "" && receiverId) {
+                connection.invoke("SendMessage", parseInt(receiverId), message)
+                    .catch(function (err) {
+                        return console.error(err.toString());
+                    });
+
+                document.querySelector("input[placeholder='Enter Message...']").value = "";
+            }
+
+            event.preventDefault();
+        });
+    </script>
+}
+
+=======
+>>>>>>> origin/develop
 <!-- end  layout wrapper -->
