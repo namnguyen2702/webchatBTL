@@ -20,7 +20,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
+<<<<<<< HEAD
 builder.Services.AddSingleton<Microsoft.AspNetCore.SignalR.IUserIdProvider, CustomUserIdProvider>();
+=======
+>>>>>>> origin/develop
 
 // Đăng ký Notyf
 builder.Services.AddControllersWithViews();

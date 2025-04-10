@@ -8,7 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using webchatBTL.Models;
 
+<<<<<<< HEAD
 namespace webchatBTL.Controllers
+=======
+namespace BTL.Controllers
+>>>>>>> origin/develop
 {
     public class ChatHubController : Controller
     {

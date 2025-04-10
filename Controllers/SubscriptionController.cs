@@ -46,7 +46,11 @@ namespace BTL.Controllers
             // Kiểm tra nếu claim null hoặc không phải số
             if (string.IsNullOrEmpty(companyClaim) || !int.TryParse(companyClaim, out int companyId))
             {
+<<<<<<< HEAD
                 _notyfService.Warning("Không xác định được công ty của bạn. Vui lòng kiểm tra lại.");
+=======
+                _notyfService.Warning("Không xác định được công ty của bạn. Vui lòng đăng nhập lại.");
+>>>>>>> origin/develop
                 return RedirectToAction("Login", "Account");
             }
 
