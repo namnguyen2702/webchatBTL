@@ -2,7 +2,7 @@
     <div class="side-nav-inner">
         <ul class="side-nav-menu scrollable">
             <li class="nav-item">
-                <a class="dropdown-toggle" asp-area="Admin" asp-controller="Home" asp-action="Index">
+                @* <a class="dropdown-toggle" asp-area="Admin" asp-controller="Home" asp-action="Index">
                     <span class="icon-holder">
                         <i class="anticon anticon-dashboard"></i>
                     </span>
@@ -10,10 +10,10 @@
                     <span class="arrow">
                         <i class="arrow-icon"></i>
                     </span>
-                </a>
-                
+                </a> *@
+
             </li>
-            
+
             <!-- Quản lý sản phẩm -->
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
@@ -27,11 +27,12 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a asp-area="Admin" asp-controller="AdminSubscriptionPlan" asp-action="Index">Quản lý dịch vụ</a>
-                    </li>     
+                        <a asp-area="Admin" asp-controller="AdminSubscriptionPlan" asp-action="Index">Quản lý dịch
+                            vụ</a>
+                    </li>
                 </ul>
             </li>
-            
+
             <!-- Quản lý khách hàng -->
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
@@ -46,12 +47,12 @@
                 <ul class="dropdown-menu">
                     <li>
                         <a asp-area="Admin" asp-controller="AdminCompany" asp-action="Index">Danh sách công ty</a>
-                    </li>                   
+                    </li>
                 </ul>
             </li>
-            
+
             <!-- Quản lý doanh số -->
-            <li class="nav-item dropdown">
+            @* <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
                         <i class="anticon anticon-form"></i>
@@ -72,8 +73,8 @@
                         <a href="form-validation.html">Form Validation</a>
                     </li>
                 </ul>
-            </li>
-            
+            </li> *@
+
             <!-- Quản lý hệ thống -->
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
@@ -92,16 +93,16 @@
                     <li>
                         <a asp-area="Admin" asp-controller="AdminGroups" asp-action="Index">Quản lý nhóm</a>
                     </li>
-                    <li>
+                    @* <li>
                         <a asp-area="Admin" asp-controller="AdminRoles" asp-action="Index">Quản lý quyền truy cập</a>
                     </li>
                     <li>
-                        <a href="data-table.html">Quản lý Tỉnh/Thành</a>
-                    </li>                 
-                </ul>
+                        <a href="data-table.html">Quản lý Tỉnh/Thành</a> *@
             </li>
-            
-            
+        </ul>
+        </li>
+
+
         </ul>
     </div>
 </div>
