@@ -833,8 +833,8 @@
       "PackagePath": "staticwebassets\\assets\\images\\logo\\logo-white.png"
     },
     {
-      "Id": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\assets\\images\\logo\\logo.png",
-      "PackagePath": "staticwebassets\\assets\\images\\logo\\logo.png"
+      "Id": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\assets\\images\\logo\\logo_chat.png",
+      "PackagePath": "staticwebassets\\assets\\images\\logo\\logo_chat.png"
     },
     {
       "Id": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\assets\\images\\megamenu\\slider\\1.jpg",
@@ -4523,6 +4523,10 @@
     {
       "Id": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\uploads\\files\\50e63823-91d0-4223-be87-30608c137e9a_mid wireframe-Trang-4.drawio.png",
       "PackagePath": "staticwebassets\\uploads\\files\\50e63823-91d0-4223-be87-30608c137e9a_mid wireframe-Trang-4.drawio.png"
+    },
+    {
+      "Id": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\uploads\\files\\76055e47-9f33-436a-a65d-d719d80eedd5_NguyenVanNam_21A100100256_Bai_tap_USECASE_26_02.docx",
+      "PackagePath": "staticwebassets\\uploads\\files\\76055e47-9f33-436a-a65d-d719d80eedd5_NguyenVanNam_21A100100256_Bai_tap_USECASE_26_02.docx"
     },
     {
       "Id": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\uploads\\files\\ec86df92-32b1-480c-b25b-9513d49c7f5d_mid wireframe-Trang-4.drawio.png",

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using webchatBTL.Models;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Authorization;
+using webchatBTL.Helpers;
 
 namespace webchatBTL.Areas.Admin.Controllers
 {
@@ -59,24 +60,43 @@ namespace webchatBTL.Areas.Admin.Controllers
         }
 
         // POST: AdminUser/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserId,FullName,Email,PasswordHash,CompanyId,CreatedAt,IsActive,Phone,RoleId")] User user)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                // Xem lỗi rõ ràng
+                foreach (var state in ModelState.Values)
+                {
+                    foreach (var err in state.Errors)
+                    {
+                        Console.WriteLine("Model Error: " + err.ErrorMessage);
+                    }
+                }
+            }
+
+            try
+            {
+                user.PasswordHash = PasswordHelper.HashPassword(user.PasswordHash);
+                user.CreatedAt = DateTime.Now;
+                user.IsActive = true; // đảm bảo gán đúng kiểu
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CompanyId"] = new SelectList(_context.Companies, "CompanyId", "CompanyName", user.CompanyId);
-            // Lấy danh sách vai trò từ bảng Roles
-            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleName", user.RoleId);
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+                ModelState.AddModelError("", "Lỗi khi lưu: " + ex.Message);
+            }
 
+            ViewData["CompanyId"] = new SelectList(_context.Companies, "CompanyId", "CompanyName", user.CompanyId);
+            ViewData["RoleId"] = new SelectList(_context.Roles, "RoleId", "RoleName", user.RoleId);
             return View(user);
         }
+
 
         // GET: AdminUser/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -99,8 +119,6 @@ namespace webchatBTL.Areas.Admin.Controllers
         }
 
         // POST: AdminUser/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("UserId,FullName,Email,PasswordHash,CompanyId,CreatedAt,IsActive,Phone,RoleId")] User user)

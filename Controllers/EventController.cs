@@ -12,7 +12,7 @@ using static System.Net.WebRequestMethods;
 
 namespace BTL.Controllers
 {
-	public class EventController : Controller
+    public class EventController : Controller
     {
         private readonly WebchatBTLDbContext _db;
         public INotyfService _notyfService { get; }
@@ -48,44 +48,44 @@ namespace BTL.Controllers
         }
 
         [HttpGet]
-[Authorize]
-public IActionResult GetEvents()
-{
-    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    var role = User.FindFirst(ClaimTypes.Role)?.Value;
+        [Authorize]
+        public IActionResult GetEvents()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var role = User.FindFirst(ClaimTypes.Role)?.Value;
 
-    IQueryable<Event> events;
+            IQueryable<Event> events;
 
-    if (role == "Admin")
-    {
-        events = _db.Events;
-    }
-    else if (role == "Manager")
-    {
-        var managedGroupId = GetManagedGroupId(int.Parse(userId));
-        events = managedGroupId == -1 
-            ? Enumerable.Empty<Event>().AsQueryable()
-            : _db.Events.Where(e => e.GroupId == managedGroupId);
-    }
-    else
-    {
-        int uid = int.Parse(userId);
-        events = _db.Events.Where(e => e.UserId == uid || e.Participants.Any(p => p.UserId == uid));
-    }
+            if (role == "Admin")
+            {
+                events = _db.Events;
+            }
+            else if (role == "Manager")
+            {
+                var managedGroupId = GetManagedGroupId(int.Parse(userId));
+                events = managedGroupId == -1
+                    ? Enumerable.Empty<Event>().AsQueryable()
+                    : _db.Events.Where(e => e.GroupId == managedGroupId);
+            }
+            else
+            {
+                int uid = int.Parse(userId);
+                events = _db.Events.Where(e => e.UserId == uid || e.Participants.Any(p => p.UserId == uid));
+            }
 
-    var result = events.Select(e => new
-{
-    id = e.EventId,                         // ✅ FullCalendar yêu cầu 'id'
-    title = e.Subject,                      // ✅ FullCalendar yêu cầu 'title'
-    start = e.Start.ToString("s"),          // ISO format yyyy-MM-ddTHH:mm:ss
-    end = e.End.HasValue ? e.End.Value.ToString("s") : null,
-    description = e.Description,
-    color = e.ThemeColor,
-    allDay = e.IsFullDay
-}).ToList();
+            var result = events.Select(e => new
+            {
+                id = e.EventId,                         // FullCalendar yêu cầu 'id'
+                title = e.Subject,                      // FullCalendar yêu cầu 'title'
+                start = e.Start.ToString("s"),          // ISO format yyyy-MM-ddTHH:mm:ss
+                end = e.End.HasValue ? e.End.Value.ToString("s") : null,
+                description = e.Description,
+                color = e.ThemeColor,
+                allDay = e.IsFullDay
+            }).ToList();
 
-    return Ok(result);
-}
+            return Ok(result);
+        }
 
         [HttpPost]
         [Authorize]

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "awE5jSmCBjrzkOgOC2GfMuFDwoNvyFQL/G4QiadbZ0k=",
+  "Hash": "TW3mYjUjseuBiAlolGAqYLlZAD9/hcXFk7x4hPlCon8=",
   "Source": "webchatBTL",
   "BasePath": "_content/webchatBTL",
   "Mode": "Default",
@@ -2373,6 +2373,25 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logo\\favicon.png"
     },
     {
+      "Identity": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\assets\\images\\logo\\logo_chat.png",
+      "SourceId": "webchatBTL",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\",
+      "BasePath": "_content/webchatBTL",
+      "RelativePath": "assets/images/logo/logo_chat.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\logo\\logo_chat.png"
+    },
+    {
       "Identity": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\assets\\images\\logo\\logo-fold-white.png",
       "SourceId": "webchatBTL",
       "SourceType": "Discovered",
@@ -2428,25 +2447,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\logo\\logo-white.png"
-    },
-    {
-      "Identity": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\assets\\images\\logo\\logo.png",
-      "SourceId": "webchatBTL",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\",
-      "BasePath": "_content/webchatBTL",
-      "RelativePath": "assets/images/logo/logo.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\logo\\logo.png"
     },
     {
       "Identity": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\assets\\images\\megamenu\\slider\\1.jpg",
@@ -21523,6 +21523,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\files\\50e63823-91d0-4223-be87-30608c137e9a_mid wireframe-Trang-4.drawio.png"
+    },
+    {
+      "Identity": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\uploads\\files\\76055e47-9f33-436a-a65d-d719d80eedd5_NguyenVanNam_21A100100256_Bai_tap_USECASE_26_02.docx",
+      "SourceId": "webchatBTL",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\",
+      "BasePath": "_content/webchatBTL",
+      "RelativePath": "uploads/files/76055e47-9f33-436a-a65d-d719d80eedd5_NguyenVanNam_21A100100256_Bai_tap_USECASE_26_02.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\files\\76055e47-9f33-436a-a65d-d719d80eedd5_NguyenVanNam_21A100100256_Bai_tap_USECASE_26_02.docx"
     },
     {
       "Identity": "C:\\ProjectVisualStudio\\webchatBTL\\wwwroot\\uploads\\files\\ec86df92-32b1-480c-b25b-9513d49c7f5d_mid wireframe-Trang-4.drawio.png",

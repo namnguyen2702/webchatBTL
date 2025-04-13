@@ -58,15 +58,16 @@ namespace webchatBTL.Controllers
                 .ToList();
 
             var friends = _context.GroupMembers
-                .Where(g => groupIds.Contains(g.GroupId) && g.UserId != userId)
-                .Select(g => g.User)
-                .Distinct()
-                .Select(u => new
-                {
-                    userId = u.UserId,
-                    fullName = u.FullName,
-                    avatarUrl = "/assets/images/users/avatar-1.jpg"
-                }).ToList();
+        .Include(g => g.User) // ✅ Load navigation property
+        .Where(g => groupIds.Contains(g.GroupId) && g.UserId != userId)
+        .Select(g => g.User)
+        .Distinct()
+        .Select(u => new
+        {
+            userId = u.UserId,
+            fullName = u.FullName,
+            avatarUrl = "/assets/images/users/avatar-1.jpg"
+        }).ToList();
 
             return Json(friends);
         }

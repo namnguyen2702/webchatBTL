@@ -111,6 +111,46 @@ namespace webchatBTL.Controllers
             return RedirectToAction("Index", "ChatHub");
         }
 
+        [HttpPost]
+        public IActionResult SubscribeAjax(int planId)
+        {
+            try
+            {
+                int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                int companyId = int.Parse(User.FindFirstValue("CompanyId"));
+
+                var user = _context.Users.Include(u => u.Role).FirstOrDefault(u => u.UserId == userId);
+                if (user == null || user.Role.RoleName != "Manager")
+                {
+                    return Json(new { success = false, message = "Bạn không có quyền đăng ký." });
+                }
+
+                var existing = _context.CompanySubscriptions
+                    .FirstOrDefault(cs => cs.CompanyId == companyId && cs.PlanId == planId && cs.EndDate >= DateTime.Now);
+
+                if (existing != null)
+                {
+                    return Json(new { success = false, message = "Đã đăng ký gói này rồi." });
+                }
+
+                _context.CompanySubscriptions.Add(new CompanySubscription
+                {
+                    CompanyId = companyId,
+                    PlanId = planId,
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now.AddMonths(1)
+                });
+                _context.SaveChanges();
+
+                return Json(new { success = true, message = "Đăng ký thành công." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Lỗi hệ thống: " + ex.Message });
+            }
+        }
+
+
 
         public IActionResult Index()
         {

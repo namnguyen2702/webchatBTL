@@ -25,8 +25,37 @@
                     <p class="text-center">Để sử dụng dịch vụ <strong>@Model.PlanName</strong>, vui lòng đăng ký gói
                         dịch vụ này.</p>
                     <form action="@Url.Action("Subscribe", "Subscription")" method="post">
-                        <input type="hidden" name="planId" value="1" />
-                        <button type="submit" class="btn btn-primary">Đăng ký ngay</button>
+                        <input type="hidden" id="planId" name="planId" value="@Model.PlanId" />
+
+                        <button id="btnSubscribe" class="btn btn-primary">Đăng ký ngay</button>
+
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <script>
+
+                            $("#btnSubscribe").click(function (e) {
+                                e.preventDefault(); // ✅ Chặn form submit truyền thống
+
+                                var planId = $("#planId").val();
+
+                                $.ajax({
+                                    url: '@Url.Action("SubscribeAjax", "Subscription")',
+                                    method: 'POST',
+                                    data: { planId: planId },
+                                    success: function (res) {
+                                        if (res.success) {
+                                            alert("✅ " + res.message);
+                                            window.location.href = "/chat.html";
+                                        } else {
+                                            alert("⚠️ " + res.message);
+                                        }
+                                    },
+                                    error: function () {
+                                        alert("❌ Đăng ký thất bại. Vui lòng thử lại.");
+                                    }
+                                });
+                            });
+
+                        </script>
                     </form>
                 </div>
             </div>
