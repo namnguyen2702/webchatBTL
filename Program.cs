@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using webchatBTL.Models;
 // using webchatBTL.Hubs;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.SignalR;
+using webchatBTL.Hubs;
+using webchatBTL.Controllers;
+using webchatBTL.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,8 +24,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
+builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
+builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 
-builder.Services.AddSingleton<Microsoft.AspNetCore.SignalR.IUserIdProvider, CustomUserIdProvider>();
+
 
 // Đăng ký Notyf
 builder.Services.AddControllersWithViews();
@@ -57,6 +63,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
+
+app.MapHub<ChatHub>("/chathub");
 app.UseAuthentication();
 app.UseAuthorization();
 

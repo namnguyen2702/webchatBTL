@@ -9,7 +9,7 @@ using webchatBTL.Models;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Authorization;
 
-namespace BTL.Areas.Admin.Controllers
+namespace webchatBTL.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]

@@ -64,6 +64,15 @@
         }
     </style>
 </head>
+<script>
+    const _oldFetch = window.fetch;
+    window.fetch = function (...args) {
+        if (!args[0] || args[0].includes("undefined")) {
+            console.warn("⚠️ fetch bị undefined URL:", args[0]);
+        }
+        return _oldFetch.apply(this, args);
+    };
+</script>
 
 <body>
     <header>
@@ -82,12 +91,15 @@
                         <ul class="navbar-nav flex-grow-1 justify-content-between">
                             <li class="nav-item-1 d-flex align-items-center">
                                 <a class="nav-link-1" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                @if(User.IsInRole("Admin"))
+                                @if (User.IsInRole("Admin"))
                                 {
                                     <a class="nav-link-1" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
-                                }                                
-                                <a class="nav-link-1" asp-area="" asp-controller="Event" asp-action="Index">Work Schedule</a>
-                                <a class="nav-link-1" asp-area="" asp-controller="/Chat.html" asp-action="Index">Live Chat</a>
+                                }
+                                <a class="nav-link-1" asp-area="" asp-controller="Event" asp-action="Index">Work
+                                    Schedule</a>
+                                <a asp-controller="ChatHub" asp-action="Index">Live Chat</a>
+
+
                             </li>
                             <li class="nav-item-1">
                                 <a class="btn-custom" href="/tai-khoan-cua-toi.html">Account</a>
@@ -122,7 +134,7 @@
     <footer class="border-top footer1" style="background-color: #d35252; color: white">
         <div class="container">
             <p style="color:white; margin: 0">©
-                <script>document.write(new Date().getFullYear())</script> Web Chat<i
+                <script>document.write(new Date().getFullYear())</script> Web Chat BTL<i
                     class="mdi mdi-heart text-danger"></i> by G41
             </p>
         </div>

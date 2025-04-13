@@ -4,7 +4,7 @@ $(document).ready(function () {
 	/*==============================
 	Mobile navigation
 	==============================*/
-	$('.header__btn').on('click', function() {
+	$('.header__btn').on('click', function () {
 		$(this).toggleClass('active');
 		$('.header__nav').toggleClass('active');
 	});
@@ -38,7 +38,7 @@ $(document).ready(function () {
 	});
 
 	$('.slideshow-item, .article-card--bg, .sign').each(function () {
-		if ($(this).attr("data-bg")){
+		if ($(this).attr("data-bg")) {
 			$(this).css({
 				'background': 'url(' + $(this).data('bg') + ')',
 				'background-position': 'center center',
@@ -58,21 +58,21 @@ $(document).ready(function () {
 		autoplayHoverPause: true,
 		smartSpeed: 600,
 		autoHeight: true,
-		responsive:{
-			0:{
-				items:1
+		responsive: {
+			0: {
+				items: 1
 			},
-			360:{
-				items:1
+			360: {
+				items: 1
 			},
-			768:{
-				items:2
+			768: {
+				items: 2
 			},
-			992:{
-				items:3
+			992: {
+				items: 3
 			},
-			1200:{
-				items:4
+			1200: {
+				items: 4
 			}
 		}
 	});
@@ -91,17 +91,17 @@ $(document).ready(function () {
 	/*==============================
 	Back to top
 	==============================*/
-	$('.footer__btn').on('click', function() {
+	$('.footer__btn').on('click', function () {
 		$('body,html').animate({
 			scrollTop: 0,
-			}, 700 // - duration of the top scrolling animation (in ms)
+		}, 700 // - duration of the top scrolling animation (in ms)
 		);
 	});
 
 	/*==============================
 	Chat
 	==============================*/
-	$('.chat-button').on('click', function(e) {
+	$('.chat-button').on('click', function (e) {
 		$('.chat-button--fixed').toggleClass('active');
 		$('.chat').toggleClass('active');
 		// e.preventDefault();
