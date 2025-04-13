@@ -61,72 +61,56 @@ namespace webchatBTL.Controllers
         }
 
 
-		public IActionResult SubscriptionNotice(string serviceName)
-		{
-			// Lấy thông tin của gói dịch vụ từ tên dịch vụ
-			var plan = _context.SubscriptionPlans.FirstOrDefault(sp => sp.PlanName == serviceName);
+        public IActionResult SubscriptionNotice(string serviceName)
+        {
+            // Lấy thông tin của gói dịch vụ từ tên dịch vụ
+            var plan = _context.SubscriptionPlans.FirstOrDefault(sp => sp.PlanName == serviceName);
 
-			if (plan == null)
-			{
-				// Nếu không tìm thấy dịch vụ, chuyển hướng đến trang lỗi hoặc trang chủ
-				return RedirectToAction("Index", "Home");
-			}
+            if (plan == null)
+            {
+                // Nếu không tìm thấy dịch vụ, chuyển hướng đến trang lỗi hoặc trang chủ
+                return RedirectToAction("Index", "Home");
+            }
 
-			return View(plan); // Truyền thông tin gói dịch vụ cho view
-		}
+            return View(plan); // Truyền thông tin gói dịch vụ cho view
+        }
 
         // Action Subscribe - Đăng ký dịch vụ cho công ty
         [HttpPost]
         public IActionResult Subscribe(int planId)
         {
-            // Lấy thông tin user hiện tại từ Claims
             int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             int companyId = int.Parse(User.FindFirstValue("CompanyId"));
 
-            // Kiểm tra xem user có vai trò là "Manager" không
-            var user = _context.Users
-                .Include(u => u.Role)
-                .FirstOrDefault(u => u.UserId == userId && u.CompanyId == companyId);
-
+            var user = _context.Users.Include(u => u.Role).FirstOrDefault(u => u.UserId == userId);
             if (user == null || user.Role.RoleName != "Manager")
             {
-                _notyfService.Warning("Bạn không có quyền đăng ký. Hãy liên hệ quản lý.");
+                _notyfService.Error("Bạn không có quyền đăng ký.");
                 return RedirectToAction("Index", "Home");
             }
 
-            // Kiểm tra nếu gói dịch vụ đã tồn tại và hợp lệ
-            var plan = _context.SubscriptionPlans.FirstOrDefault(p => p.PlanId == planId);
-            if (plan == null)
-            {
-                _notyfService.Error("Gói dịch vụ không tồn tại.");
-                return RedirectToAction("Index", "Home");
-            }
-
-            // Kiểm tra xem công ty đã đăng ký gói này chưa và gói này có còn hiệu lực không
-            var existingSubscription = _context.CompanySubscriptions
+            var existing = _context.CompanySubscriptions
                 .FirstOrDefault(cs => cs.CompanyId == companyId && cs.PlanId == planId && cs.EndDate >= DateTime.Now);
 
-            if (existingSubscription != null)
+            if (existing != null)
             {
-                _notyfService.Information("Công ty đã đăng ký gói dịch vụ này và vẫn còn hiệu lực.");
+                _notyfService.Information("Đã đăng ký gói này.");
                 return RedirectToAction("Index", "ChatHub");
             }
 
-            // Thêm gói đăng ký mới cho công ty
-            var newSubscription = new CompanySubscription
+            _context.CompanySubscriptions.Add(new CompanySubscription
             {
                 CompanyId = companyId,
                 PlanId = planId,
                 StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddMonths(1) // Giả sử gói đăng ký có thời hạn 1 tháng
-            };
-
-            _context.CompanySubscriptions.Add(newSubscription);
+                EndDate = DateTime.Now.AddMonths(1)
+            });
             _context.SaveChanges();
 
-            _notyfService.Success("Đăng ký dịch vụ thành công.");
-            return RedirectToAction("Index", "Home");
+            _notyfService.Success("Đăng ký thành công.");
+            return RedirectToAction("Index", "ChatHub");
         }
+
 
         public IActionResult Index()
         {

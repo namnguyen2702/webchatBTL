@@ -27,8 +27,6 @@ builder.Services.AddSignalR();
 builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
 builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 
-
-
 // Đăng ký Notyf
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();

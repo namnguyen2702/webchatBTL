@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Đăng ký dịch vụ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var plan = ViewBag.Plan;
+    bool hasRegistered = ViewBag.HasRegistered;
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Dịch vụ: @plan.PlanName</h2>
+    <p>Giá: <strong>@plan.Price.ToString("N0") VNĐ</strong></p>
+    <p>Tối đa @plan.MaxUsers người dùng / @plan.MaxStorage MB dung lượng</p>
+
+    @if (hasRegistered)
+    {
+        <div class="alert alert-info">Công ty của bạn đã đăng ký gói này và vẫn còn hiệu lực.</div>
+        <a class="btn btn-primary" href="/chat.html">Quay lại Live Chat</a>
+    }
+    else
+    {
+        <form method="post" action="/register-service/subscribe">
+            <button class="btn btn-success">Đăng ký ngay</button>
+        </form>
+    }
+</div>

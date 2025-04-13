@@ -1,13 +1,35 @@
 @model webchatBTL.Models.SubscriptionPlan
+
 @{
-    ViewData["Title"] = "Cần đăng ký dịch vụ";
+    ViewData["Title"] = "Đăng ký Dịch vụ";
 }
 
-<div class="alert alert-warning mt-4">
-    <h4>Bạn chưa đăng ký dịch vụ @Model.PlanName.</h4>
-    <p>Vui lòng đăng ký để sử dụng tính năng này.</p>
-    <form asp-action="Subscribe" method="post">
-        <input type="hidden" name="planId" value="@Model.PlanId" />
-        <button type="submit" class="btn btn-primary">Đăng ký ngay</button>
-    </form>
+<div class="container mt-5" style="height: 100vh">
+    <div class="card shadow-lg">
+        <div class="card-header text-center bg-primary text-white">
+            <h2>Đăng ký Dịch vụ @Model.PlanName</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Thông tin gói dịch vụ</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Số lượng người dùng tối đa:</strong> @Model.MaxUsers</li>
+                        <li class="list-group-item"><strong>Dung lượng lưu trữ tối đa:</strong> @Model.MaxStorage GB
+                        </li>
+                        <li class="list-group-item"><strong>Giá:</strong> @Model.Price $ / tháng</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <h5 class="text-muted">Bạn chưa đăng ký dịch vụ này</h5>
+                    <p class="text-center">Để sử dụng dịch vụ <strong>@Model.PlanName</strong>, vui lòng đăng ký gói
+                        dịch vụ này.</p>
+                    <form action="@Url.Action("Subscribe", "Subscription")" method="post">
+                        <input type="hidden" name="planId" value="1" />
+                        <button type="submit" class="btn btn-primary">Đăng ký ngay</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

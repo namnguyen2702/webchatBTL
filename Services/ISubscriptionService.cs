@@ -4,4 +4,5 @@ namespace webchatBTL.Services
     {
         bool IsCompanySubscribedToService(int companyId, string serviceName);
     }
+
 }

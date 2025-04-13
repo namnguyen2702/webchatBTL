@@ -13,15 +13,17 @@ namespace webchatBTL.Services
 
         public bool IsCompanySubscribedToService(int companyId, string serviceName)
         {
-            int planId = _context.SubscriptionPlans
-                .Where(sp => sp.PlanName == serviceName)
-                .Select(sp => sp.PlanId)
+            var planId = _context.SubscriptionPlans
+                .Where(p => p.PlanName == serviceName)
+                .Select(p => p.PlanId)
                 .FirstOrDefault();
 
-            if (planId == 0) return false;
+            if (planId == 0)
+                return false;
 
             return _context.CompanySubscriptions
                 .Any(cs => cs.CompanyId == companyId && cs.PlanId == planId && cs.EndDate >= DateTime.Now);
         }
     }
+
 }
