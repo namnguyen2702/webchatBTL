@@ -1,0 +1,217 @@
+Tuyệt vời! Mình sẽ hướng dẫn bạn từng dòng chi tiết và có chú thích (comment) rõ ràng cho bài thực hành với CSDL BTL. Ta sẽ chọn bảng mẫu là Product để triển khai đầy đủ:
+
+🧱 1. Tạo Model: Product.cs
+csharp
+Sao chép
+Chỉnh sửa
+using System.ComponentModel.DataAnnotations;
+
+public class Product
+{
+    public int ProductId { get; set; }
+
+    [Required(ErrorMessage = "Tên sản phẩm bắt buộc nhập")]
+    [StringLength(100, ErrorMessage = "Tên không quá 100 ký tự")]
+    public string Name { get; set; }
+
+    [Range(0.01, 1000000, ErrorMessage = "Giá phải lớn hơn 0")]
+    public decimal Price { get; set; }
+
+    [StringLength(255, ErrorMessage = "Mô tả tối đa 255 ký tự")]
+    public string Description { get; set; }
+}
+📦 2. Khai báo DbSet trong DbContext
+Trong WebchatBTLDbContext.cs:
+
+csharp
+Sao chép
+Chỉnh sửa
+public DbSet<Product> Products { get; set; }
+🛠 3. Tạo ProductController.cs trong Areas\Admin\Controllers
+csharp
+Sao chép
+Chỉnh sửa
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using webchatBTL.Models;
+
+namespace webchatBTL.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class ProductController : Controller
+    {
+        private readonly WebchatBTLDbContext _context;
+
+        public ProductController(WebchatBTLDbContext context)
+        {
+            _context = context;
+        }
+
+        // ✅ CHO MỌI NGƯỜI XEM
+        public async Task<IActionResult> Index()
+        {
+            var products = await _context.Products.ToListAsync(); // Lấy danh sách sản phẩm từ DB
+            return View(products); // Truyền sang View
+        }
+
+        // ✅ CHỈ ADMIN MỚI ĐƯỢC THÊM
+        [Authorize(Roles = "Admin")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Create(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(product); // Thêm vào DB
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index)); // Quay lại danh sách
+            }
+            return View(product); // Nếu lỗi, quay lại form với lỗi validator
+        }
+
+        // ✅ SỬA - CHỈ ADMIN
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+            var product = await _context.Products.FindAsync(id);
+            if (product == null) return NotFound();
+            return View(product);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Edit(int id, Product product)
+        {
+            if (id != product.ProductId) return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(product);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(product);
+        }
+
+        // ✅ XOÁ - CHỈ ADMIN
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+            var product = await _context.Products.FindAsync(id);
+            if (product == null) return NotFound();
+            return View(product);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+    }
+}
+🖼 4. View Index.cshtml – Danh sách sản phẩm
+cshtml
+Sao chép
+Chỉnh sửa
+@model IEnumerable<webchatBTL.Models.Product>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <a asp-action="Create" class="btn btn-success">➕ Thêm sản phẩm</a>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Mô tả</th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>Hành động</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Description</td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductId">✏️ Sửa</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProductId">🗑 Xoá</a>
+                </td>
+            }
+        </tr>
+    }
+    </tbody>
+</table>
+🧩 5. View Create.cshtml (form thêm sản phẩm)
+cshtml
+Sao chép
+Chỉnh sửa
+@model webchatBTL.Models.Product
+
+<h2>Thêm sản phẩm</h2>
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+</form>
+🔐 6. Phân quyền người dùng (User chỉ được xem)
+Người có Role là "User":
+
+Vào được Index
+
+Không được vào Create, Edit, Delete
+
+Kiểm tra quyền bằng:
+
+csharp
+Sao chép
+Chỉnh sửa
+[Authorize(Roles = "Admin")] // Controller hoặc Action

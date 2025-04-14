@@ -1,0 +1,190 @@
+// =============================
+// Controllers/AdminUserController.cs
+// =============================
+
+using Microsoft.AspNetCore.Mvc;
+using webchatBTL.Models;
+
+namespace webchatBTL.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class AdminUserController : Controller
+    {
+        private readonly WebchatBTLDbContext _context;
+
+        public AdminUserController(WebchatBTLDbContext context)
+        {
+            _context = context;
+        }
+
+        // Từ trang AdminUser click sang bài thực hành
+        public IActionResult RedirectToExercise()
+        {
+            return RedirectToAction("ListCards", "UserExercise", new { area = "" }); // Chuyển sang controller khác
+        }
+    }
+}
+
+// =============================
+// Controllers/UserExerciseController.cs (mới hoàn toàn)
+// =============================
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using webchatBTL.Models;
+
+namespace webchatBTL.Controllers
+{
+    public class UserExerciseController : Controller
+    {
+        private readonly WebchatBTLDbContext _context;
+
+        public UserExerciseController(WebchatBTLDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IActionResult> ListCards()
+        {
+            var users = await _context.Users.ToListAsync();
+            return View(users);
+        }
+
+        public IActionResult Create() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> Create(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ListCards));
+            }
+            return View(user);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ListCards));
+            }
+            return View(user);
+        }
+    }
+}
+
+// =============================
+// Controllers/UserApiController.cs (không đổi)
+// =============================
+
+using Microsoft.AspNetCore.Mvc;
+using webchatBTL.Models;
+
+namespace webchatBTL.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UserApiController : ControllerBase
+    {
+        private readonly WebchatBTLDbContext _context;
+
+        public UserApiController(WebchatBTLDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpDelete("delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            var user = _context.Users.Find(id);
+            if (user == null) return NotFound();
+
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+            return Ok(new { success = true });
+        }
+    }
+}
+
+// =============================
+// Views/UserExercise/ListCards.cshtml (giống bản cũ, đổi namespace)
+// =============================
+
+@model IEnumerable<webchatBTL.Models.User>
+
+@{
+    ViewData["Title"] = "Bài thực hành: Danh sách người dùng";
+}
+
+<ul class="nav nav-tabs mb-3">
+    <li class="nav-item">
+        <span class="nav-link active">Bài tập CRUD & Fetch</span>
+    </li>
+</ul>
+
+<div class="container">
+    <div class="row">
+        @foreach (var user in Model)
+        {
+            <div class="col-md-4 col-12 mb-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5>@user.FullName</h5>
+                        <p>
+                            Email: @user.Email<br />
+                            Phone: @user.Phone<br />
+                            VerifyKey: <strong>@user.VerifiKey</strong>
+                        </p>
+                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@user.UserId">Sửa</a>
+                        <button class="btn btn-sm btn-danger" onclick="deleteUser(@user.UserId)">Xoá</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    function deleteUser(id) {
+        if (confirm("Bạn có chắc muốn xoá không?")) {
+            fetch(`/api/userapi/delete/${id}`, { method: 'DELETE' })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) location.reload();
+                    else alert("Xoá thất bại");
+                });
+        }
+    }
+</script>
+}
+
+// =============================
+// Views/UserExercise/Create.cshtml & Edit.cshtml giống như cũ
+// =============================
+// (bạn chỉ cần copy 2 view đó từ AdminUser sang thư mục Views/UserExercise và giữ nguyên nội dung)
+
+
+
+
+Giải pháp: Thêm 1 nút chuyển hướng
+🔧 Bước 1: Trong file Index.cshtml hiện tại (trang danh sách tài khoản quản trị), bạn chèn vào ngay chỗ menu điều hướng hoặc cuối phần header:
+html
+Sao chép
+Chỉnh sửa
+<div class="text-right mb-3">
+    <a asp-area="" asp-controller="UserExercise" asp-action="ListCards" class="btn btn-outline-info">
+        👉 Làm bài thực hành CRUD VerifyKey
+    </a>
+</div>

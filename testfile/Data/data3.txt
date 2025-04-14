@@ -1,0 +1,299 @@
+// =============================
+// Models/User.cs
+// =============================
+
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace webchatBTL.Models
+{
+    public class User
+    {
+        public int UserId { get; set; } // Mã định danh người dùng
+
+        [Required] // Bắt buộc nhập
+        public string FullName { get; set; } // Tên người dùng
+
+        [Required, EmailAddress] // Bắt buộc nhập và đúng định dạng email
+        public string Email { get; set; }
+
+        [Phone] // Kiểm tra định dạng số điện thoại
+        public string Phone { get; set; }
+
+        // ✅ Yêu cầu 2: Thêm trường VerifyKey với validation theo đề bài
+        [Required(ErrorMessage = "Vui lòng nhập VerifyKey")]
+        [StringLength(10, ErrorMessage = "VerifyKey phải đúng 10 ký tự")]
+        [RegularExpression(@"^\d[A-Za-z0-9]{9}$", ErrorMessage = "Phải bắt đầu bằng số và đúng 10 ký tự")]
+        public string VerifiKey { get; set; } // Mã xác minh người dùng
+    }
+}
+
+// =============================
+// Controllers/AdminUserController.cs
+// =============================
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using webchatBTL.Models;
+
+namespace webchatBTL.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class AdminUserController : Controller
+    {
+        private readonly WebchatBTLDbContext _context;
+
+        public AdminUserController(WebchatBTLDbContext context)
+        {
+            _context = context; // Inject DbContext
+        }
+
+        // ✅ Yêu cầu 1: Hiển thị danh sách người dùng
+        public async Task<IActionResult> ListCards()
+        {
+            var users = await _context.Users.ToListAsync(); // Lấy danh sách tất cả người dùng từ DB
+            return View(users); // Truyền danh sách sang View
+        }
+
+        // ✅ Yêu cầu 3: Hiển thị form tạo user mới
+        public IActionResult Create() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> Create(User user)
+        {
+            if (ModelState.IsValid) // Kiểm tra hợp lệ theo attribute trong model
+            {
+                _context.Add(user); // Thêm vào DB
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ListCards)); // Quay lại trang danh sách
+            }
+            return View(user); // Nếu lỗi, hiển thị lại form
+        }
+
+        // ✅ Sửa thông tin người dùng
+        public async Task<IActionResult> Edit(int id)
+        {
+            var user = await _context.Users.FindAsync(id); // Tìm user theo id
+            return View(user); // Truyền ra form Edit
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(user); // Cập nhật thông tin user
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ListCards));
+            }
+            return View(user);
+        }
+    }
+}
+
+// =============================
+// Controllers/UserApiController.cs
+// =============================
+
+using Microsoft.AspNetCore.Mvc;
+using webchatBTL.Models;
+
+namespace webchatBTL.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController] // API không trả về View
+    public class UserApiController : ControllerBase
+    {
+        private readonly WebchatBTLDbContext _context;
+
+        public UserApiController(WebchatBTLDbContext context)
+        {
+            _context = context;
+        }
+
+        // ✅ API xoá user (yêu cầu 4 - Fetch API)
+        [HttpDelete("delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            var user = _context.Users.Find(id); // Tìm user theo id
+            if (user == null) return NotFound(); // Không tìm thấy
+
+            _context.Users.Remove(user); // Xoá khỏi DB
+            _context.SaveChanges();
+            return Ok(new { success = true }); // Trả về JSON success
+        }
+    }
+}
+
+// =============================
+// Views/AdminUser/ListCards.cshtml
+// =============================
+
+@model IEnumerable<webchatBTL.Models.User>
+
+@{
+    ViewData["Title"] = "Danh sách người dùng";
+}
+
+<!-- Menu ngang để ẩn view khác -->
+<ul class="nav nav-tabs mb-3">
+    <li class="nav-item"><span class="nav-link active">Danh sách người dùng</span></li>
+</ul>
+
+<!-- Hiển thị các bản ghi dưới dạng card 3 cột desktop, 1 cột mobile -->
+<div class="container">
+    <div class="row">
+        @foreach (var user in Model)
+        {
+            <div class="col-md-4 col-12 mb-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5>@user.FullName</h5>
+                        <p>
+                            Email: @user.Email<br />
+                            Phone: @user.Phone<br />
+                            VerifyKey: <strong>@user.VerifiKey</strong>
+                        </p>
+                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@user.UserId">Sửa</a>
+                        <button class="btn btn-sm btn-danger" onclick="deleteUser(@user.UserId)">Xoá</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    // Xóa bằng Fetch API
+    function deleteUser(id) {
+        if (confirm("Bạn có chắc muốn xoá không?")) {
+            fetch(`/api/userapi/delete/${id}`, { method: 'DELETE' })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) location.reload(); // Tải lại nếu xoá thành công
+                    else alert("Xoá thất bại");
+                });
+        }
+    }
+</script>
+} 
+
+// =============================
+// Views/AdminUser/Create.cshtml & Edit.cshtml
+// =============================
+
+@model webchatBTL.Models.User
+
+@{
+    ViewData["Title"] = "Tạo/Sửa người dùng";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="@ViewContext.RouteData.Values["action"]">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phone"></label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VerifiKey"></label>
+        <input asp-for="VerifiKey" class="form-control" />
+        <span asp-validation-for="VerifiKey" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <a asp-action="ListCards" class="btn btn-secondary">Hủy</a>
+</form>
+
+
+===========================================================
+===========================================================
+đây là các bước kiểm tra và chạy thử chi tiết để đảm bảo bài làm đúng, đủ và không lỗi (cực kỳ quan trọng khi đi thi/thực hành):
+
+✅ BƯỚC 1: Chạy lại migration nếu chưa
+bash
+Sao chép
+Chỉnh sửa
+dotnet ef migrations add AddVerifiKeyToUser
+dotnet ef database update
+📌 Kiểm tra trong SQL Server hoặc SSMS: bảng Users phải có cột VerifiKey (kiểu nvarchar(10)).
+
+✅ BƯỚC 2: Kiểm tra routing
+Vào Program.cs hoặc Startup.cs, đảm bảo bạn cho phép route đến area Admin:
+
+csharp
+Sao chép
+Chỉnh sửa
+endpoints.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+📌 Sau đó thử truy cập:
+
+arduino
+Sao chép
+Chỉnh sửa
+https://localhost:xxxx/Admin/AdminUser/ListCards
+✅ BƯỚC 3: Kiểm tra giao diện danh sách
+Giao diện hiển thị đúng 3 bản ghi/hàng trên desktop, 1 bản ghi trên mobile
+
+Kiểm tra xem có hiển thị đúng các trường: FullName, Email, Phone, VerifyKey
+
+Kiểm tra nút Xoá có gọi đúng Fetch API không
+
+✅ Nếu xoá thành công → dữ liệu bị xoá và reload trang.
+
+✅ BƯỚC 4: Tạo và sửa User
+Truy cập:
+
+pgsql
+Sao chép
+Chỉnh sửa
+https://localhost:xxxx/Admin/AdminUser/Create
+Nhập dữ liệu hợp lệ, VerifiKey đúng định dạng: 10 ký tự, bắt đầu bằng số
+
+❌ Ví dụ sai: abc1234567 → bị lỗi (vì không bắt đầu bằng số)
+
+✅ Ví dụ đúng: 1abc234567
+
+→ Nếu lưu thành công → redirect về ListCards và hiển thị dữ liệu mới.
+
+✅ BƯỚC 5: Kiểm tra valid VerifyKey
+❌ Nhập sai VerifyKey:
+abc1234567 → lỗi Regex
+
+1abc → lỗi StringLength
+
+Bỏ trống → lỗi Required
+
+👉 Các lỗi này phải được hiển thị bên dưới input (<span asp-validation-for="VerifiKey">)
+
+✅ BƯỚC 6: Kiểm tra API xoá
+Mở DevTools > Network → Khi nhấn nút Xoá:
+
+Phải thấy DELETE gọi đến /api/userapi/delete/{id}
+
+Kết quả trả về: { success: true }
+
+Nếu success: false hoặc không reload → kiểm tra Fetch trong JS
+
+✅ BONUS: Kiểm tra bảo mật cơ bản
+VerifiKey có bị bypass không? (F12 → sửa HTML → gửi lỗi?)
+
+Người dùng không được sửa UserId người khác nếu bạn có check

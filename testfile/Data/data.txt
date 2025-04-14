@@ -1,0 +1,27 @@
+CAU1
+1. Broken Authentication – OWASP A02
+Mô tả: Lỗi xác thực khiến kẻ xấu đăng nhập trái phép.
+
+Biện pháp:
+
+Mã hóa mật khẩu với PBKDF2 / SHA256.
+
+Không lưu mật khẩu thô trong DB.
+
+Hạn chế session timeout, xác thực 2 lớp nếu có.
+
+2. Cross-Site Request Forgery (CSRF) – OWASP A05
+🧨 Mô tả:
+Kẻ tấn công lừa người dùng đã đăng nhập click vào một link giả (nhưng hợp lệ), từ đó gửi yêu cầu thay đổi thông tin lên server.
+
+Vì session/cookie vẫn còn, server hiểu nhầm người dùng thật thực hiện hành động đó.
+
+📌 Ví dụ: User A bị ép click link /account/delete/5 → tài khoản bị xóa mà không hay biết.
+
+✅ Biện pháp:
+Sử dụng CSRF Token trong form và header.
+
+ASP.NET MVC hỗ trợ qua @Html.AntiForgeryToken() + [ValidateAntiForgeryToken].
+
+CAU2 Thêm trường VerifiKey
+ ALTER TABLE Users ADD VerifiKey NVARCHAR(6) NOT NULL DEFAULT '';

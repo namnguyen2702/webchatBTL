@@ -1,0 +1,120 @@
+@* Sửa View Views/Admin/AdminUser/Index.cshtml
+Tìm dòng @model IEnumerable<webchatBTL.Models.User> ở đầu file.
+
+Sửa bảng để thêm cột VerifiKey:
+html
+Sao chép
+Chỉnh sửa
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>VerifiKey</th> <!-- ✅ THÊM CỘT NÀY -->
+            <th>Công ty</th>
+            <th>Vai trò</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FullName</td>
+                <td>@item.Email</td>
+                <td>@item.VerifiKey</td> <!-- ✅ THÊM CỘT DỮ LIỆU -->
+                <td>@item.Company?.CompanyName</td>
+                <td>@item.Role?.RoleName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-sm btn-warning">Sửa</a>
+                    <a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-sm btn-danger">Xoá</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> *@
+
+@* ✅ B3 :Tạo cột nhập VerifiKey khi Create hoặc Edit User
+Vào file:
+
+Views/Admin/AdminUser/Create.cshtml
+
+Views/Admin/AdminUser/Edit.cshtml
+
+Thêm đoạn sau vào dưới các input:
+
+html
+Sao chép
+Chỉnh sửa
+<div class="form-group col-md-5">
+    <label asp-for="VerifiKey" class="control-label"></label>
+    <input asp-for="VerifiKey" class="form-control" />
+    <span asp-validation-for="VerifiKey" class="text-danger"></span>
+</div>
+✅ Bước 4: Bổ sung VerifiKey vào [Bind(...)] trong Create & Edit
+Trong AdminUserController.cs, sửa:
+
+csharp
+Sao chép
+Chỉnh sửa
+[Bind("UserId,FullName,Email,PasswordHash,CompanyId,CreatedAt,IsActive,Phone,RoleId,VerifiKey")] *@
+
+
+
+
+@* Dưới đây là phần bạn cần chèn thêm input trường VerifiKey vào tất cả các View: Create, Edit, Delete, Index (nếu có).
+
+✅ 1. Thêm VerifiKey vào Create.cshtml
+Chèn sau <input asp-for="Phone" ...> hoặc sau RoleId đều được:
+
+html
+Sao chép
+Chỉnh sửa
+<div class="form-group col-md-5">
+    <label asp-for="VerifiKey" class="control-label"></label>
+    <input asp-for="VerifiKey" class="form-control" />
+    <span asp-validation-for="VerifiKey" class="text-danger"></span>
+</div>
+✅ 2. Thêm VerifiKey vào Edit.cshtml
+Chèn vào đoạn sau (giữa hoặc sau Phone, RoleId, đều hợp lý):
+
+html
+Sao chép
+Chỉnh sửa
+<div class="form-group col-md-5">
+    <label asp-for="VerifiKey" class="control-label"></label>
+    <input asp-for="VerifiKey" class="form-control" />
+    <span asp-validation-for="VerifiKey" class="text-danger"></span>
+</div>
+✅ 3. Thêm VerifiKey vào Delete.cshtml
+Trong thẻ <dl> của phần hiển thị user, thêm:
+
+html
+Sao chép
+Chỉnh sửa
+<dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.VerifiKey)
+</dt>
+<dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.VerifiKey)
+</dd>
+✅ 4. Thêm cột VerifiKey vào Index.cshtml (nếu chưa thêm)
+Trong <thead> thêm:
+
+html
+Sao chép
+Chỉnh sửa
+<th>VerifiKey</th>
+Trong <tbody>, chèn vào mỗi dòng:
+
+html
+Sao chép
+Chỉnh sửa
+<td>@item.VerifiKey</td>
+✅ Đừng quên:
+Thêm "VerifiKey" vào [Bind(...)] trong Create và Edit trong Controller.
+
+csharp
+Sao chép
+Chỉnh sửa
+[Bind("UserId,FullName,Email,PasswordHash,CompanyId,CreatedAt,IsActive,Phone,RoleId,VerifiKey")] *@

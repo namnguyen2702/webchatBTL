@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Thời gian truy cập gần nhất";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.LastVisited))
+{
+    <p>Lần truy cập gần nhất của bạn là vào: <strong>@ViewBag.LastVisited</strong></p>
+}
+else
+{
+    <p>Chưa có dữ liệu về truy cập gần nhất!</p>
+}
+
+<a asp-action="Index" class="btn btn-primary mt-3">Về trang chủ</a>
